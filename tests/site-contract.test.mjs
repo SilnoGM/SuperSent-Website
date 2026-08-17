@@ -82,3 +82,14 @@ test("公开页面不使用会被严格 CSP 拦截的内联样式", () => {
 
   assert.doesNotMatch(pages, /\sstyle\s*=/i);
 });
+
+test("整站使用受控的响应式排版尺度", () => {
+  const css = readSiteFile("styles.css");
+
+  assert.match(css, /--type-hero:\s*clamp\(3rem,\s*3\.9vw,\s*4\.4rem\)/);
+  assert.match(css, /--type-section:\s*clamp\(2rem,\s*3\.2vw,\s*3\.45rem\)/);
+  assert.match(css, /--type-subsection:\s*clamp\(1\.5rem,\s*2vw,\s*2\.1rem\)/);
+  assert.match(css, /--type-legal-hero:\s*clamp\(2\.8rem,\s*5vw,\s*4\.5rem\)/);
+  assert.match(css, /--measure-copy:\s*58ch/);
+  assert.match(css, /\.hero h1\s*\{[^}]*font-size:\s*var\(--type-hero\)/s);
+});
