@@ -23,9 +23,9 @@ test("首页包含完整产品信息与真实下载入口", () => {
   assert.match(html, /变量模板/);
   assert.match(
     html,
-    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.0\.0\/SuperSent-1\.0\.0\.dmg/
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.0\.1\/SuperSent-1\.0\.1\.dmg/
   );
-  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.0\.0/);
+  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.0\.1/);
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/issues/);
 });
 
