@@ -1095,8 +1095,15 @@ code {
 .hero-enter {
   opacity: 0;
   animation: enter-up 760ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: var(--delay, 0ms);
 }
+
+/* 延迟由样式表统一管理，避免内联 style 被线上严格 CSP 拦截。 */
+.hero-delay-1 { animation-delay: 40ms; }
+.hero-delay-2 { animation-delay: 110ms; }
+.hero-delay-3 { animation-delay: 180ms; }
+.hero-delay-4 { animation-delay: 250ms; }
+.hero-delay-5 { animation-delay: 320ms; }
+.hero-delay-6 { animation-delay: 390ms; }
 
 .reveal.is-pending {
   opacity: 0;

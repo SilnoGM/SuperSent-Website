@@ -76,3 +76,9 @@ test("公开页面不加载第三方脚本、追踪器或非 HTTPS 资源", () =
   assert.doesNotMatch(pages, /google-analytics|googletagmanager|plausible|umami|segment|mixpanel/i);
   assert.doesNotMatch(pages, /http:\/\//);
 });
+
+test("公开页面不使用会被严格 CSP 拦截的内联样式", () => {
+  const pages = [readSiteFile("index.html"), readSiteFile("privacy.html"), readSiteFile("404.html")].join("\n");
+
+  assert.doesNotMatch(pages, /\sstyle\s*=/i);
+});
