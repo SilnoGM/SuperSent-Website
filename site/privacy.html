@@ -50,7 +50,7 @@
             <p class="section-index">最后更新：2026 年 8 月 17 日</p>
             <h1>SuperSent 隐私说明</h1>
             <p>
-              SuperSent 1.0.1 是一款本地运行的 macOS 内容工具。无需账户，不提供云同步，内容库不会由应用上传到 SuperSent 服务器。
+              SuperSent 1.0.2 是一款本地运行的 macOS 内容工具。无需账户，不提供云同步，内容库不会由应用上传到 SuperSent 服务器。
             </p>
           </header>
 
@@ -60,6 +60,7 @@
               <li>无需账户，也不要求提供姓名、邮箱或电话号码。</li>
               <li>内容数据库和导入资源保存在当前 Mac。</li>
               <li>不使用分析或追踪服务，不植入广告。</li>
+              <li>检查更新只获取版本信息和安装包，不会上传内容库。</li>
               <li>自动粘贴权限可以不授予，复制功能仍然可用。</li>
             </ul>
           </section>
@@ -73,7 +74,7 @@
               <span>本地数据目录</span>
               <code>~/Library/Application Support/SuperSent/</code>
             </div>
-            <p>SuperSent 1.0.1 不提供云同步，不会在不同设备之间自动传输这些内容。</p>
+            <p>SuperSent 1.0.2 不提供云同步，不会在不同设备之间自动传输这些内容。</p>
           </section>
 
           <section id="permissions">
@@ -103,7 +104,8 @@
           <section id="network">
             <h2>网络与追踪</h2>
             <p>
-              SuperSent 1.0.1 不使用分析 SDK、广告 SDK、崩溃上报服务或行为追踪服务。应用当前也没有账户系统和远程内容接口。
+              SuperSent 1.0.2 不使用分析 SDK、广告 SDK、崩溃上报服务或行为追踪服务，也没有账户系统和远程内容接口。
+              当你手动选择“检查更新…”或允许自动检查时，应用会从 SuperSent 官网获取签名版本信息，并按需从 GitHub 下载签名安装包；此过程不会上传内容库、剪贴板内容或所选文件。
             </p>
             <p>
               本官网同样不加载分析脚本、第三方字体或广告资源。点击下载和问题反馈链接时，浏览器会打开 GitHub，并受 GitHub 自身的服务条款与隐私政策约束。
@@ -113,7 +115,7 @@
           <section id="control">
             <h2>用户控制</h2>
             <p>
-              你可以在 SuperSent 管理窗口中编辑或删除内容，并可随时在“系统设置 → 隐私与安全性 → 辅助功能”中撤销自动粘贴权限。
+              你可以在 SuperSent 管理窗口中编辑或删除内容。删除条目时，仅会清理应用受管目录内且未被其他条目引用的资源；外部文件和仍被引用的资源不会被删除。
             </p>
             <p>
               如果不授予辅助功能权限，选择内容后仍会先写入剪贴板，你可以在目标应用中手动粘贴。
@@ -135,10 +137,10 @@
 
     <footer class="site-footer legal-footer">
       <div class="container footer-grid">
-        <p>SuperSent 1.0.1 · 本地优先的 macOS 内容工具</p>
+        <p>SuperSent 1.0.2 · 本地优先的 macOS 内容工具</p>
         <div class="footer-links">
           <a href="/">首页</a>
-          <a href="https://github.com/SilnoGM/SuperSent-Releases/releases/tag/v1.0.1">发布说明</a>
+          <a href="https://github.com/SilnoGM/SuperSent-Releases/releases/tag/v1.0.2">发布说明</a>
         </div>
         <p class="copyright">© <span data-current-year>2026</span> SuperSent</p>
       </div>
