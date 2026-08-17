@@ -29,6 +29,7 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: 92px;
 }
@@ -60,6 +61,7 @@ body::before {
 
 img {
   display: block;
+  height: auto;
   max-width: 100%;
 }
 
@@ -357,7 +359,7 @@ code {
 .hero h1 {
   max-width: 760px;
   margin-bottom: 30px;
-  font-size: clamp(3.6rem, 7.4vw, 7.1rem);
+  font-size: clamp(3.35rem, 5.4vw, 5.5rem);
   font-weight: 760;
   letter-spacing: -0.068em;
   line-height: 0.94;
