@@ -46,6 +46,7 @@ test("站点发布 v1.2.0 的签名更新源和更新说明", () => {
 
   assert.match(appcast, /<sparkle:version>5<\/sparkle:version>/);
   assert.match(appcast, /<sparkle:shortVersionString>1\.2\.0<\/sparkle:shortVersionString>/);
+  assert.match(appcast, /<sparkle:minimumSystemVersion>13\.0<\/sparkle:minimumSystemVersion>/);
   assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.2\.0\/SuperSent-1\.2\.0\.dmg/);
   assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.2\.0\.md/);
   assert.match(appcast, /sparkle:edSignature=/);
