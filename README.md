@@ -51,3 +51,23 @@ npm audit --audit-level=high
 npm run check
 git diff --check
 ```
+
+## 与应用仓库协同发布
+
+官网是 SuperSent 正式发布链路的最后一站。总控入口位于应用源码仓库：
+
+```bash
+cd /absolute/path/to/SUPER-SENT
+SUPER_SENT_NOTARY_PROFILE="SuperSent-notary" \
+bash Scripts/release-workflow.sh package
+bash Scripts/release-workflow.sh publish --confirm-tag vx.y.z
+```
+
+发布顺序固定为：
+
+1. 提交、推送源码仓库并创建版本 tag；
+2. 向 `SilnoGM/SuperSent-Releases` 发布已签名和公证的资产，并更新其 README；
+3. 最后提交、推送本仓库并部署 Cloudflare Pages；
+4. 从公开地址重新校验 DMG、appcast、更新说明与缓存响应头。
+
+发布前需要在本仓库更新并暂存版本号、首页、隐私页、测试和必要截图。`site/appcast.xml` 与当前版本的签名更新说明由应用仓库打包脚本按字节同步并暂存，禁止手工编辑签名内容。完整安全边界、重跑语义和验收项见应用仓库的 `docs/Distribution.md`。
