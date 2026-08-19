@@ -11,7 +11,7 @@ function readSiteFile(relativePath) {
   return readFileSync(absolutePath, "utf8");
 }
 
-test("首页包含 v1.2.1 自动更新与组合内容信息", () => {
+test("首页包含 v1.2.2 仅复制修复与完整产品信息", () => {
   const html = readSiteFile("index.html");
 
   assert.match(html, /<h1[^>]*>[^<]*SuperSent/s);
@@ -35,10 +35,12 @@ test("首页包含 v1.2.1 自动更新与组合内容信息", () => {
   assert.match(html, /只有发现新版本时才显示提示/);
   assert.match(
     html,
-    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.2\.1\/SuperSent-1\.2\.1\.dmg/
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.2\.2\/SuperSent-1\.2\.2\.dmg/
   );
-  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.2\.1/);
-  assert.match(html, /"softwareVersion": "1\.2\.1"/);
+  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.2\.2/);
+  assert.match(html, /"softwareVersion": "1\.2\.2"/);
+  assert.match(html, /仅复制快捷键/);
+  assert.match(html, /只写入剪贴板，不模拟粘贴/);
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/issues/);
 });
 
@@ -98,27 +100,24 @@ test("首页完整介绍当前正式版的四十一个功能点", () => {
   assert.match(html, /全局搜索无需授权/);
 });
 
-test("站点发布 v1.2.1 的单条签名更新源和更新说明", () => {
+test("站点发布 v1.2.2 的单条签名更新源和更新说明", () => {
   const appcast = readSiteFile("appcast.xml");
-  const releaseNotes = readSiteFile("SuperSent-1.2.1.md");
+  const releaseNotes = readSiteFile("SuperSent-1.2.2.md");
 
   assert.equal((appcast.match(/<item>/g) ?? []).length, 1);
-  assert.match(appcast, /<sparkle:version>6<\/sparkle:version>/);
-  assert.match(appcast, /<sparkle:shortVersionString>1\.2\.1<\/sparkle:shortVersionString>/);
+  assert.match(appcast, /<sparkle:version>7<\/sparkle:version>/);
+  assert.match(appcast, /<sparkle:shortVersionString>1\.2\.2<\/sparkle:shortVersionString>/);
   assert.match(appcast, /<sparkle:minimumSystemVersion>13\.0<\/sparkle:minimumSystemVersion>/);
-  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.2\.1\/SuperSent-1\.2\.1\.dmg/);
-  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.2\.1\.md/);
-  assert.match(appcast, /SuperSent6-3\.delta" sparkle:deltaFrom="3"/);
-  assert.match(appcast, /SuperSent6-4\.delta" sparkle:deltaFrom="4"/);
-  assert.match(appcast, /SuperSent6-5\.delta" sparkle:deltaFrom="5"/);
-  assert.doesNotMatch(appcast, /releases\/download\/v1\.2\.1\/SuperSent-1\.(?:0\.2|1\.0|2\.0)\.dmg/);
+  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.2\.2\/SuperSent-1\.2\.2\.dmg/);
+  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.2\.2\.md/);
+  assert.doesNotMatch(appcast, /<sparkle:deltas>/);
+  assert.doesNotMatch(appcast, /releases\/download\/v1\.2\.2\/SuperSent-1\.(?:0\.2|1\.0|2\.0|2\.1)\.dmg/);
   assert.match(appcast, /sparkle:edSignature=/);
   assert.match(appcast, /sparkle-signatures:/);
   assert.match(releaseNotes, /安装更新只替换应用程序本身/);
-  assert.match(releaseNotes, /启动后静默检查一次/);
-  assert.match(releaseNotes, /每四小时检查一次/);
-  assert.match(releaseNotes, /不在后台自动下载或安装更新/);
-  assert.match(releaseNotes, /SuperSent-Releases\/releases\/download\/v1\.2\.1\/SuperSent-1\.2\.1\.dmg/);
+  assert.match(releaseNotes, /仅复制.*快捷键无响应/);
+  assert.match(releaseNotes, /不会向原应用自动发送/);
+  assert.match(releaseNotes, /SuperSent-Releases\/releases\/download\/v1\.2\.2\/SuperSent-1\.2\.2\.dmg/);
 });
 
 test("签名更新源每次请求都会向 CDN 重新验证", () => {
@@ -151,7 +150,8 @@ test("公开文案统一使用测试设备示例", () => {
     readSiteFile("privacy.html"),
     readSiteFile("SuperSent-1.1.0.md"),
     readSiteFile("SuperSent-1.2.0.md"),
-    readSiteFile("SuperSent-1.2.1.md")
+    readSiteFile("SuperSent-1.2.1.md"),
+    readSiteFile("SuperSent-1.2.2.md")
   ].join("\n");
 
   assert.doesNotMatch(publicCopy, new RegExp(deprecatedCategoryName));
