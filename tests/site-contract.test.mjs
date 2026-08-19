@@ -22,6 +22,9 @@ test("首页包含 v1.1.0 产品信息与真实下载入口", () => {
   assert.match(html, /保存前重命名/);
   assert.match(html, /变量模板/);
   assert.match(html, /分类分组/);
+  assert.match(html, /测试设备/);
+  const deprecatedCategoryName = ["焚", "烧", "炉"].join("");
+  assert.doesNotMatch(html, new RegExp(deprecatedCategoryName));
   assert.match(html, /安装、教程、效果展示、参数信息/);
   assert.match(html, /检查更新/);
   assert.match(
@@ -52,7 +55,7 @@ test("首页展示四张经过验收的真实产品截图", () => {
   const html = readSiteFile("index.html");
 
   for (const screenshot of [
-    "assets/SuperSent-category-groups.png",
+    "assets/SuperSent-category-groups-test-device.png",
     "assets/SuperSent-main-window.png",
     "assets/SuperSent-search-panel-1.1.0.png",
     "assets/SuperSent-file-rename.png"
