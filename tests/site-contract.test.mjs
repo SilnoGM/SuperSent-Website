@@ -54,7 +54,7 @@ test("首页展示四张经过验收的真实产品截图", () => {
   for (const screenshot of [
     "assets/SuperSent-category-groups.png",
     "assets/SuperSent-main-window.png",
-    "assets/SuperSent-search-panel.png",
+    "assets/SuperSent-search-panel-1.1.0.png",
     "assets/SuperSent-file-rename.png"
   ]) {
     assert.match(html, new RegExp(screenshot.replaceAll(".", "\\.")));
