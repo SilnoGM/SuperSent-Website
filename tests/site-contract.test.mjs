@@ -11,7 +11,7 @@ function readSiteFile(relativePath) {
   return readFileSync(absolutePath, "utf8");
 }
 
-test("首页包含完整产品信息与真实下载入口", () => {
+test("首页包含 v1.1.0 产品信息与真实下载入口", () => {
   const html = readSiteFile("index.html");
 
   assert.match(html, /<h1[^>]*>[^<]*SuperSent/s);
@@ -21,33 +21,38 @@ test("首页包含完整产品信息与真实下载入口", () => {
   assert.match(html, /视频/);
   assert.match(html, /保存前重命名/);
   assert.match(html, /变量模板/);
+  assert.match(html, /分类分组/);
+  assert.match(html, /安装、教程、效果展示、参数信息/);
   assert.match(html, /检查更新/);
   assert.match(
     html,
-    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.0\.2\/SuperSent-1\.0\.2\.dmg/
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.1\.0\/SuperSent-1\.1\.0\.dmg/
   );
-  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.0\.2/);
+  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.1\.0/);
+  assert.match(html, /"softwareVersion": "1\.1\.0"/);
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/issues/);
 });
 
-test("站点发布 v1.0.2 的签名更新源和更新说明", () => {
+test("站点发布 v1.1.0 的签名更新源和更新说明", () => {
   const appcast = readSiteFile("appcast.xml");
-  const releaseNotes = readSiteFile("SuperSent-1.0.2.md");
+  const releaseNotes = readSiteFile("SuperSent-1.1.0.md");
 
-  assert.match(appcast, /<sparkle:version>3<\/sparkle:version>/);
-  assert.match(appcast, /<sparkle:shortVersionString>1\.0\.2<\/sparkle:shortVersionString>/);
-  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.0\.2\/SuperSent-1\.0\.2\.dmg/);
-  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.0\.2\.md/);
+  assert.match(appcast, /<sparkle:version>4<\/sparkle:version>/);
+  assert.match(appcast, /<sparkle:shortVersionString>1\.1\.0<\/sparkle:shortVersionString>/);
+  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.1\.0\/SuperSent-1\.1\.0\.dmg/);
+  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.1\.0\.md/);
   assert.match(appcast, /sparkle:edSignature=/);
   assert.match(appcast, /sparkle-signatures:/);
   assert.match(releaseNotes, /安装更新只替换应用程序本身/);
-  assert.match(releaseNotes, /e205945ebe9c41e2cd2f19f058b6c92b4b4aa107a1728b17561ea0e134efc487/);
+  assert.match(releaseNotes, /分类内分组/);
+  assert.match(releaseNotes, /SuperSent-Releases\/releases\/download\/v1\.1\.0\/SuperSent-1\.1\.0\.dmg/);
 });
 
-test("首页展示三张经过验收的真实产品截图", () => {
+test("首页展示四张经过验收的真实产品截图", () => {
   const html = readSiteFile("index.html");
 
   for (const screenshot of [
+    "assets/SuperSent-category-groups.png",
     "assets/SuperSent-main-window.png",
     "assets/SuperSent-search-panel.png",
     "assets/SuperSent-file-rename.png"

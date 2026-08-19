@@ -24,6 +24,7 @@ test("站点必须提供图标、robots 与 404 页面", () => {
   for (const relativePath of [
     "assets/app-icon.png",
     "assets/favicon-32.png",
+    "assets/SuperSent-category-groups.png",
     "robots.txt",
     "404.html"
   ]) {
