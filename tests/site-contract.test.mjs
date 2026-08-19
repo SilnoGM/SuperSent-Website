@@ -11,7 +11,7 @@ function readSiteFile(relativePath) {
   return readFileSync(absolutePath, "utf8");
 }
 
-test("首页包含 v1.2.0 组合内容与全引导式发送信息", () => {
+test("首页包含 v1.2.1 自动更新与组合内容信息", () => {
   const html = readSiteFile("index.html");
 
   assert.match(html, /<h1[^>]*>[^<]*SuperSent/s);
@@ -31,12 +31,14 @@ test("首页包含 v1.2.0 组合内容与全引导式发送信息", () => {
   assert.doesNotMatch(html, new RegExp(deprecatedCategoryName));
   assert.match(html, /安装、教程、效果展示、参数信息/);
   assert.match(html, /检查更新/);
+  assert.match(html, /每四小时检查一次/);
+  assert.match(html, /只有发现新版本时才显示提示/);
   assert.match(
     html,
-    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.2\.0\/SuperSent-1\.2\.0\.dmg/
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.2\.1\/SuperSent-1\.2\.1\.dmg/
   );
-  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.2\.0/);
-  assert.match(html, /"softwareVersion": "1\.2\.0"/);
+  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.2\.1/);
+  assert.match(html, /"softwareVersion": "1\.2\.1"/);
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/issues/);
 });
 
@@ -66,7 +68,7 @@ test("签名更新源每次请求都会向 CDN 重新验证", () => {
   );
 });
 
-test("首页展示 v1.2.0 经过验收的真实产品截图", () => {
+test("首页展示经过验收的真实产品截图", () => {
   const html = readSiteFile("index.html");
 
   for (const screenshot of [
@@ -86,7 +88,8 @@ test("公开文案统一使用测试设备示例", () => {
     readSiteFile("index.html"),
     readSiteFile("privacy.html"),
     readSiteFile("SuperSent-1.1.0.md"),
-    readSiteFile("SuperSent-1.2.0.md")
+    readSiteFile("SuperSent-1.2.0.md"),
+    readSiteFile("SuperSent-1.2.1.md")
   ].join("\n");
 
   assert.doesNotMatch(publicCopy, new RegExp(deprecatedCategoryName));
@@ -119,6 +122,8 @@ test("隐私页如实说明本地数据与辅助功能权限边界", () => {
   assert.match(html, /辅助功能权限/);
   assert.match(html, /自动粘贴/);
   assert.match(html, /检查更新/);
+  assert.match(html, /默认自动检查/);
+  assert.match(html, /每四小时检查一次/);
   assert.match(html, /不会上传内容库/);
 });
 
