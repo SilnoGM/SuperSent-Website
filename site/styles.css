@@ -24,7 +24,7 @@
   --type-subsection: clamp(1.5rem, 2vw, 2.1rem);
   --type-legal-hero: clamp(2.8rem, 5vw, 4.5rem);
   --measure-copy: 58ch;
-  --font-sans: "SF Pro Display", "SF Pro Text", "PingFang SC", sans-serif;
+  --font-sans: "Avenir Next", "PingFang SC", "Hiragino Sans GB", sans-serif;
   --font-mono: "SFMono-Regular", "SF Mono", ui-monospace, Menlo, monospace;
 }
 
@@ -91,6 +91,7 @@ select {
 h1,
 h2,
 h3,
+h4,
 p,
 figure {
   margin-top: 0;
@@ -98,7 +99,8 @@ figure {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   letter-spacing: -0.03em;
   line-height: 1.12;
 }
@@ -545,6 +547,126 @@ code {
   margin-bottom: 0;
   font-size: 1rem;
   line-height: 1.78;
+}
+
+.capabilities-section {
+  position: relative;
+  padding-top: 72px;
+  border-top: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, transparent 0 13%, rgba(36, 116, 200, 0.035) 13% 13.08%, transparent 13.08%),
+    rgba(255, 255, 255, 0.32);
+}
+
+.capabilities-heading {
+  display: grid;
+  margin-bottom: clamp(76px, 9vw, 126px);
+  grid-template-columns: 0.48fr 1.52fr;
+  gap: 72px;
+}
+
+.capabilities-heading h2 {
+  max-width: 790px;
+}
+
+.capabilities-heading > div > p:last-child {
+  max-width: var(--measure-copy);
+  margin-bottom: 0;
+  line-height: 1.78;
+}
+
+.capability-ledger {
+  counter-reset: capability-entry;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.capability-cluster {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.46fr) minmax(0, 1.54fr);
+  gap: clamp(42px, 6vw, 88px);
+  padding-block: clamp(72px, 8vw, 108px);
+  border-top: 1px solid var(--line-strong);
+}
+
+.capability-rail {
+  position: sticky;
+  top: 112px;
+  align-self: start;
+  padding-left: 20px;
+  border-left: 2px solid var(--accent);
+}
+
+.capability-code {
+  display: block;
+  margin-bottom: 20px;
+  color: var(--accent-dark);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 720;
+  letter-spacing: 0.12em;
+}
+
+.capability-rail h3 {
+  max-width: 260px;
+  margin-bottom: 14px;
+}
+
+.capability-rail p {
+  max-width: 30ch;
+  margin-bottom: 0;
+  font-size: 0.88rem;
+  line-height: 1.72;
+}
+
+.capability-entries {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+
+.capability-entry {
+  position: relative;
+  min-height: 178px;
+  padding: 30px 28px 30px 64px;
+  border-bottom: 1px solid var(--line);
+  counter-increment: capability-entry;
+}
+
+.capability-entry:nth-child(even) {
+  border-left: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.capability-entry::before {
+  position: absolute;
+  top: 32px;
+  left: 20px;
+  color: var(--accent-dark);
+  content: counter(capability-entry, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 720;
+  letter-spacing: 0.05em;
+}
+
+.capability-entry h4 {
+  margin: 0 0 11px;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 720;
+  letter-spacing: -0.02em;
+}
+
+.capability-entry p {
+  max-width: 48ch;
+  margin-bottom: 0;
+  font-size: 0.84rem;
+  line-height: 1.72;
+}
+
+.capability-entry code,
+.capability-entry kbd {
+  font-size: 0.78em;
 }
 
 .feature-section {
@@ -1370,11 +1492,22 @@ code {
   }
 
   .intro-grid,
+  .capabilities-heading,
   .section-heading,
   .template-grid,
   .privacy-grid {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  .capability-cluster {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .capability-rail {
+    position: static;
+    max-width: 620px;
   }
 
   .showcase-search,
@@ -1518,6 +1651,38 @@ code {
 
   .intro-section {
     padding-top: 96px;
+  }
+
+  .capabilities-section {
+    padding-top: 64px;
+    background: rgba(255, 255, 255, 0.32);
+  }
+
+  .capabilities-heading {
+    margin-bottom: 68px;
+  }
+
+  .capability-cluster {
+    padding-block: 64px;
+  }
+
+  .capability-entries {
+    grid-template-columns: 1fr;
+  }
+
+  .capability-entry {
+    min-height: 0;
+    padding: 26px 18px 28px 56px;
+  }
+
+  .capability-entry:nth-child(even) {
+    border-left: 0;
+    background: rgba(255, 255, 255, 0.34);
+  }
+
+  .capability-entry::before {
+    top: 28px;
+    left: 16px;
   }
 
   .section-heading {

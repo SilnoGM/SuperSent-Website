@@ -42,6 +42,62 @@ test("首页包含 v1.2.1 自动更新与组合内容信息", () => {
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/issues/);
 });
 
+test("首页完整介绍当前正式版的四十一个功能点", () => {
+  const html = readSiteFile("index.html");
+  const publishedFeatures = [...html.matchAll(/data-feature="([^"]+)"/g)]
+    .map((match) => match[1]);
+
+  assert.deepEqual(publishedFeatures, [
+    "text-content",
+    "image-content",
+    "file-video-content",
+    "variable-template",
+    "composite-content",
+    "import-rename",
+    "item-fields",
+    "item-crud",
+    "category-management",
+    "group-management",
+    "library-views",
+    "inherited-placement",
+    "list-filter-sort",
+    "asset-safety",
+    "global-hotkey",
+    "search-fields",
+    "multi-keyword-search",
+    "pinyin-search",
+    "relevance-ranking",
+    "keyboard-navigation",
+    "location-path",
+    "media-preview",
+    "ordinary-send",
+    "copy-only",
+    "template-render",
+    "guided-preview",
+    "guided-actions",
+    "guided-position",
+    "target-safety",
+    "browser-fallback",
+    "wechat-compatibility",
+    "send-boundary",
+    "menu-bar",
+    "accessibility-boundary",
+    "local-data",
+    "privacy-boundary",
+    "update-checks",
+    "update-confirmation",
+    "update-data-preservation",
+    "signed-distribution",
+    "system-requirements"
+  ]);
+
+  assert.match(html, /href="#capabilities">全部功能<\/a>/);
+  assert.match(html, /只有空分组可删除/);
+  assert.match(html, /多关键词 AND 搜索/);
+  assert.match(html, /不会自动点击第三方应用的发送、发布或提交按钮/);
+  assert.match(html, /全局搜索无需授权/);
+});
+
 test("站点发布 v1.2.1 的单条签名更新源和更新说明", () => {
   const appcast = readSiteFile("appcast.xml");
   const releaseNotes = readSiteFile("SuperSent-1.2.1.md");

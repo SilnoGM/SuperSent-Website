@@ -6,7 +6,7 @@
     <title>SuperSent — macOS 常用内容快捷发送工具</title>
     <meta
       name="description"
-      content="SuperSent 是一款原生 macOS 菜单栏内容工具，可把文字、图片和视频组成一个条目，并通过全引导式发送逐项预览和粘贴。"
+      content="SuperSent 是一款原生 macOS 菜单栏内容工具，支持文本、图片、文件、变量模板与组合内容，并提供分类分组、全局搜索、快捷复制、全引导式发送和签名更新。"
     >
     <meta name="theme-color" content="#f4f7fb">
     <meta name="color-scheme" content="light">
@@ -19,7 +19,7 @@
     <meta property="og:title" content="SuperSent — 常用内容，在需要时出现">
     <meta
       property="og:description"
-      content="把文字、图片和视频组成一个条目，搜索后通过浮窗逐项确认并粘贴。"
+      content="完整管理、搜索和发送文本、图片、文件、变量模板与组合内容，所有数据保存在本机。"
     >
     <meta property="og:url" content="{{SITE_URL}}/">
     <meta property="og:image" content="{{SITE_URL}}/assets/SuperSent-search-panel-composite.png">
@@ -70,7 +70,8 @@
         </button>
 
         <nav id="primary-navigation" class="primary-navigation" aria-label="主要导航">
-          <a href="#features">功能</a>
+          <a href="#capabilities">全部功能</a>
+          <a href="#features">界面实景</a>
           <a href="#workflow">使用方式</a>
           <a href="#privacy">隐私</a>
           <a href="https://github.com/SilnoGM/SuperSent-Releases/releases/tag/v1.2.1">发布说明</a>
@@ -92,8 +93,8 @@
               SuperSent<span>一条内容，完整发送。</span>
             </h1>
             <p class="hero-summary hero-enter hero-delay-3">
-              把文字、图片和视频按顺序组合成一个条目。按下 <kbd>⌘⇧Space</kbd> 搜索后，
-              全引导式发送浮窗会逐项预览，由你确认每一次粘贴。
+              把常用文本、图片、文件、变量模板和组合内容保存在本机。按下 <kbd>⌘⇧Space</kbd>
+              搜索后，可直接复制、自动粘贴，或通过全引导式浮窗逐项预览并确认发送。
             </p>
             <div class="hero-actions hero-enter hero-delay-4">
               <a
@@ -158,8 +159,239 @@
           <div>
             <h2>不再把一组说明、图片和视频拆成三次寻找。</h2>
             <p>
-              SuperSent 1.2.1 把需要连续发送的多种内容保存为一个有序条目。从创建、搜索到发送，顺序与预览始终保持一致。
+              SuperSent 1.2.1 既能管理单条文本、图片、文件和变量模板，也能把需要连续发送的多种内容保存为一个有序条目。从创建、组织、搜索到发送，所有能力都在同一套本地内容库中完成。
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="capabilities" class="section capabilities-section">
+        <div class="container">
+          <div class="capabilities-heading reveal">
+            <p class="section-index">02 / 完整功能目录</p>
+            <div>
+              <p class="eyebrow">SuperSent 1.2.1</p>
+              <h2>从保存第一条内容，到安全完成一次粘贴。</h2>
+              <p>
+                以下功能均来自当前正式版实现与自动化测试，不包含路线图或未发布能力。每项说明同时标明实际交互与安全边界。
+              </p>
+            </div>
+          </div>
+
+          <div class="capability-ledger">
+            <article class="capability-cluster reveal" aria-labelledby="capability-content-title">
+              <header class="capability-rail">
+                <span class="capability-code">A / CREATE</span>
+                <h3 id="capability-content-title">创建与内容类型</h3>
+                <p>五种条目类型，共用标题、归属和检索能力。</p>
+              </header>
+              <div class="capability-entries">
+                <div class="capability-entry" data-feature="text-content">
+                  <h4>纯文本与链接</h4>
+                  <p>保存普通文字、多段说明和 URL；链接按完整纯文本参与搜索、复制与粘贴，不转换成独立内容类型。</p>
+                </div>
+                <div class="capability-entry" data-feature="image-content">
+                  <h4>图片内容</h4>
+                  <p>导入图片到受管资源目录，在主窗口和搜索面板预览，并以系统图片格式写入剪贴板。</p>
+                </div>
+                <div class="capability-entry" data-feature="file-video-content">
+                  <h4>文件与视频</h4>
+                  <p>保存普通文件；常见视频仍属于文件内容，但会被识别并在主窗口、搜索面板中直接播放。</p>
+                </div>
+                <div class="capability-entry" data-feature="variable-template">
+                  <h4>变量模板</h4>
+                  <p>使用 <code>{变量名:提示文字}</code> 定义动态字段；发送前按出现顺序填写，重复变量只询问一次。</p>
+                </div>
+                <div class="capability-entry" data-feature="composite-content">
+                  <h4>组合内容</h4>
+                  <p>在一个条目中添加文字、图片和视频块，支持删除、拖动排序和保存前整体预览；全部内容块事务化保存。</p>
+                </div>
+                <div class="capability-entry" data-feature="import-rename">
+                  <h4>导入与保存前重命名</h4>
+                  <p>图片、视频和文件先进入临时区，可在入库前改名；扩展名保持不变，同名冲突会提示且绝不覆盖。</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="capability-cluster reveal" aria-labelledby="capability-organize-title">
+              <header class="capability-rail">
+                <span class="capability-code">B / ORGANIZE</span>
+                <h3 id="capability-organize-title">组织与内容管理</h3>
+                <p>从条目字段到分类树，持续保持资料库可维护。</p>
+              </header>
+              <div class="capability-entries">
+                <div class="capability-entry" data-feature="item-fields">
+                  <h4>完整条目字段</h4>
+                  <p>每条内容都可设置标题、类型、分类、分组、标签和别名；组合内容沿用同一套元数据。</p>
+                </div>
+                <div class="capability-entry" data-feature="item-crud">
+                  <h4>新建、编辑与删除</h4>
+                  <p>主窗口直接创建和修改条目；删除前确认，并在数据库操作成功后才清理对应受管资源。</p>
+                </div>
+                <div class="capability-entry" data-feature="category-management">
+                  <h4>分类管理</h4>
+                  <p>创建分类并查看条目数量；删除分类时保留其中条目，只清空分类和分组归属，避免误删内容。</p>
+                </div>
+                <div class="capability-entry" data-feature="group-management">
+                  <h4>分类内分组</h4>
+                  <p>分组支持新建、重命名、上移、下移和删除；只有空分组可删除，同分类内不允许重名。</p>
+                </div>
+                <div class="capability-entry" data-feature="library-views">
+                  <h4>全部、高频与未分组视图</h4>
+                  <p>侧栏显示全部内容、高频常用、分类、真实分组和计算得到的“未分组”，每个节点同步展示数量。</p>
+                </div>
+                <div class="capability-entry" data-feature="inherited-placement">
+                  <h4>自动继承当前位置</h4>
+                  <p>从分类、分组或未分组节点新建条目时，编辑器自动带入对应归属，并拒绝跨分类的无效分组。</p>
+                </div>
+                <div class="capability-entry" data-feature="list-filter-sort">
+                  <h4>主窗口筛选与排序</h4>
+                  <p>条目列表可按标题或标签即时筛选，并按最近使用时间或最近编辑时间排列。</p>
+                </div>
+                <div class="capability-entry" data-feature="asset-safety">
+                  <h4>受管资源安全清理</h4>
+                  <p>资源按图片、视频、文档、压缩包和音频等目录整理；共享资源、外部文件、符号链接和越界路径不会被误删。</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="capability-cluster reveal" aria-labelledby="capability-search-title">
+              <header class="capability-rail">
+                <span class="capability-code">C / FIND</span>
+                <h3 id="capability-search-title">搜索与预览</h3>
+                <p>不离开当前应用，用键盘找到并确认目标内容。</p>
+              </header>
+              <div class="capability-entries">
+                <div class="capability-entry" data-feature="global-hotkey">
+                  <h4>全局快捷键</h4>
+                  <p>在任意应用按 <kbd>⌘⇧Space</kbd> 打开悬浮搜索面板；注册快捷键本身不需要辅助功能权限。</p>
+                </div>
+                <div class="capability-entry" data-feature="search-fields">
+                  <h4>多字段检索</h4>
+                  <p>同时搜索标题、正文、标签和别名；组合条目额外索引文字块与媒体文件名，不索引本地完整路径。</p>
+                </div>
+                <div class="capability-entry" data-feature="multi-keyword-search">
+                  <h4>多关键词 AND 搜索</h4>
+                  <p>用空格输入多个关键词时，每个词都必须命中，可跨标题、正文和不同组合内容块共同匹配。</p>
+                </div>
+                <div class="capability-entry" data-feature="pinyin-search">
+                  <h4>拼音与首字母</h4>
+                  <p>中文标题支持全拼和拼音首字母；组合文字内容也参与首字母检索，无需安装第三方词库。</p>
+                </div>
+                <div class="capability-entry" data-feature="relevance-ranking">
+                  <h4>相关度与常用度排序</h4>
+                  <p>精确别名、标题前缀、标签、正文等按相关度评分；分数相同时，使用次数更高的内容优先。</p>
+                </div>
+                <div class="capability-entry" data-feature="keyboard-navigation">
+                  <h4>完整键盘闭环</h4>
+                  <p>使用 <kbd>↑</kbd><kbd>↓</kbd> 切换结果、<kbd>Enter</kbd> 执行动作、<kbd>⌥ Enter</kbd> 仅复制、<kbd>Esc</kbd> 关闭。</p>
+                </div>
+                <div class="capability-entry" data-feature="location-path">
+                  <h4>分类路径提示</h4>
+                  <p>搜索结果显示“分类 / 分组”、仅分类或“无分类”，帮助区分同名内容，但路径不会改变搜索命中。</p>
+                </div>
+                <div class="capability-entry" data-feature="media-preview">
+                  <h4>右侧完整预览</h4>
+                  <p>文本和模板显示可读正文，图片显示缩略图，视频提供播放控制，组合内容按真实顺序呈现全部块。</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="capability-cluster reveal" aria-labelledby="capability-send-title">
+              <header class="capability-rail">
+                <span class="capability-code">D / SEND</span>
+                <h3 id="capability-send-title">复制与发送</h3>
+                <p>从单条快捷粘贴，到每块都由鼠标确认的组合流程。</p>
+              </header>
+              <div class="capability-entries">
+                <div class="capability-entry" data-feature="ordinary-send">
+                  <h4>普通条目自动粘贴</h4>
+                  <p>选择文本、图片、文件或已渲染模板后，SuperSent 写入系统剪贴板、恢复原目标应用并投递 <kbd>⌘V</kbd>。</p>
+                </div>
+                <div class="capability-entry" data-feature="copy-only">
+                  <h4>仅复制模式</h4>
+                  <p>按 <kbd>⌥ Enter</kbd> 只写入剪贴板，不模拟粘贴；组合条目会提示改用全引导式发送，避免只复制第一块。</p>
+                </div>
+                <div class="capability-entry" data-feature="template-render">
+                  <h4>模板填写后发送</h4>
+                  <p>模板会先弹出变量填写框，生成最终纯文本后再按普通条目流程复制或粘贴。</p>
+                </div>
+                <div class="capability-entry" data-feature="guided-preview">
+                  <h4>逐块预览</h4>
+                  <p>组合内容启动后，在输入框附近展示当前文字、图片或视频预览、类型和总进度；视频不会自动播放。</p>
+                </div>
+                <div class="capability-entry" data-feature="guided-actions">
+                  <h4>粘贴、跳过、取消</h4>
+                  <p>每一块都通过鼠标按钮决定：粘贴当前项、跳到下一项，或立即取消整个流程。</p>
+                </div>
+                <div class="capability-entry" data-feature="guided-position">
+                  <h4>浮窗自动定位</h4>
+                  <p>优先贴近当前输入框显示；空间不足时自动切换上下方，并限制在当前显示器可见区域内。</p>
+                </div>
+                <div class="capability-entry" data-feature="target-safety">
+                  <h4>每次粘贴前复核目标</h4>
+                  <p>持续校验前台应用 PID、当前窗口与输入位置；目标应用或窗口发生变化时停止投递并提示返回。</p>
+                </div>
+                <div class="capability-entry" data-feature="browser-fallback">
+                  <h4>网页输入框兼容模式</h4>
+                  <p>浏览器或自定义编辑器未公开可编辑节点时，使用当前聚焦窗口定位，并持续提示确认光标仍在输入框。</p>
+                </div>
+                <div class="capability-entry" data-feature="wechat-compatibility">
+                  <h4>微信桌面端兼容</h4>
+                  <p>针对微信未公开输入框几何的情况使用安全窗口锚点，仍在每次粘贴前确认前台应用和目标窗口。</p>
+                </div>
+                <div class="capability-entry" data-feature="send-boundary">
+                  <h4>完成统计，不代替发送</h4>
+                  <p>结束后显示已粘贴与已跳过数量并记录一次使用；不会自动点击第三方应用的发送、发布或提交按钮。</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="capability-cluster reveal" aria-labelledby="capability-system-title">
+              <header class="capability-rail">
+                <span class="capability-code">E / SYSTEM</span>
+                <h3 id="capability-system-title">系统、隐私与更新</h3>
+                <p>明确权限用途，发布与更新全程可验证。</p>
+              </header>
+              <div class="capability-entries">
+                <div class="capability-entry" data-feature="menu-bar">
+                  <h4>菜单栏常驻入口</h4>
+                  <p>从菜单栏打开内容管理窗口、手动“检查更新…”或退出应用；首次启动会直接显示主窗口。</p>
+                </div>
+                <div class="capability-entry" data-feature="accessibility-boundary">
+                  <h4>辅助功能权限边界</h4>
+                  <p>全局搜索无需授权；只有定位输入框和向其他应用投递 <kbd>⌘V</kbd> 时需要辅助功能权限。</p>
+                </div>
+                <div class="capability-entry" data-feature="local-data">
+                  <h4>数据库与资源保存在本机</h4>
+                  <p>SQLite 数据库和托管资源位于 <code>Application Support/SuperSent</code>，不写入可被更新替换的应用包。</p>
+                </div>
+                <div class="capability-entry" data-feature="privacy-boundary">
+                  <h4>无需账户与追踪</h4>
+                  <p>不要求注册，不提供云同步，不上传内容库、剪贴板内容或用户文件，也不使用分析和广告追踪服务。</p>
+                </div>
+                <div class="capability-entry" data-feature="update-checks">
+                  <h4>自动与手动检查更新</h4>
+                  <p>启动后静默检查一次，持续运行时每四小时检查签名更新源；菜单栏仍可随时手动检查。</p>
+                </div>
+                <div class="capability-entry" data-feature="update-confirmation">
+                  <h4>发现新版才提示</h4>
+                  <p>没有新版本时不打断操作；不会后台自动下载、安装或退出，最终更新始终由用户确认。</p>
+                </div>
+                <div class="capability-entry" data-feature="update-data-preservation">
+                  <h4>更新保留全部内容</h4>
+                  <p>Sparkle 只替换 <code>/Applications/SuperSent.app</code>，分类、分组、条目、数据库和托管资源继续保留。</p>
+                </div>
+                <div class="capability-entry" data-feature="signed-distribution">
+                  <h4>签名、公证与更新校验</h4>
+                  <p>应用和 DMG 使用 Apple Developer ID 签名并通过公证；appcast、说明、安装包与增量包使用 Sparkle EdDSA 验证。</p>
+                </div>
+                <div class="capability-entry" data-feature="system-requirements">
+                  <h4>当前系统支持</h4>
+                  <p>正式版要求 macOS 13 Ventura 或更高版本，当前安装包面向 Apple Silicon Mac。</p>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -167,8 +399,8 @@
       <section id="features" class="section feature-section">
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow">v1.2.1 核心工作流</p>
-            <h2>组合一次，搜索一次，再由你逐项确认发送。</h2>
+            <p class="eyebrow">主要功能界面实景</p>
+            <h2>每一项功能，都能在真实窗口中找到对应位置。</h2>
           </div>
 
           <article id="composite" class="showcase showcase-composite reveal">
