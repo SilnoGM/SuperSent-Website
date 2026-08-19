@@ -57,6 +57,15 @@ test("站点发布 v1.2.0 的签名更新源和更新说明", () => {
   assert.match(releaseNotes, /SuperSent-Releases\/releases\/download\/v1\.2\.0\/SuperSent-1\.2\.0\.dmg/);
 });
 
+test("签名更新源每次请求都会向 CDN 重新验证", () => {
+  const headers = readSiteFile("_headers");
+
+  assert.match(
+    headers,
+    /\/appcast\.xml\s+Cache-Control:\s*no-cache,\s*max-age=0,\s*must-revalidate/s
+  );
+});
+
 test("首页展示 v1.2.0 经过验收的真实产品截图", () => {
   const html = readSiteFile("index.html");
 
