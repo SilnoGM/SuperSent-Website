@@ -24,8 +24,10 @@ test("站点必须提供图标、robots 与 404 页面", () => {
   for (const relativePath of [
     "assets/app-icon.png",
     "assets/favicon-32.png",
+    "assets/SuperSent-composite-editor-and-preview.png",
+    "assets/SuperSent-search-panel-composite.png",
+    "assets/SuperSent-guided-send-panel.png",
     "assets/SuperSent-category-groups-test-device.png",
-    "assets/SuperSent-search-panel-1.1.0.png",
     "robots.txt",
     "404.html"
   ]) {

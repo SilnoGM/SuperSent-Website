@@ -11,7 +11,7 @@ function readSiteFile(relativePath) {
   return readFileSync(absolutePath, "utf8");
 }
 
-test("首页包含 v1.1.0 产品信息与真实下载入口", () => {
+test("首页包含 v1.2.0 组合内容与全引导式发送信息", () => {
   const html = readSiteFile("index.html");
 
   assert.match(html, /<h1[^>]*>[^<]*SuperSent/s);
@@ -22,6 +22,10 @@ test("首页包含 v1.1.0 产品信息与真实下载入口", () => {
   assert.match(html, /保存前重命名/);
   assert.match(html, /变量模板/);
   assert.match(html, /分类分组/);
+  assert.match(html, /组合内容/);
+  assert.match(html, /全引导式发送/);
+  assert.match(html, /逐项预览/);
+  assert.match(html, /粘贴、跳过、取消/);
   assert.match(html, /测试设备/);
   const deprecatedCategoryName = ["焚", "烧", "炉"].join("");
   assert.doesNotMatch(html, new RegExp(deprecatedCategoryName));
@@ -29,39 +33,53 @@ test("首页包含 v1.1.0 产品信息与真实下载入口", () => {
   assert.match(html, /检查更新/);
   assert.match(
     html,
-    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.1\.0\/SuperSent-1\.1\.0\.dmg/
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.2\.0\/SuperSent-1\.2\.0\.dmg/
   );
-  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.1\.0/);
-  assert.match(html, /"softwareVersion": "1\.1\.0"/);
+  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.2\.0/);
+  assert.match(html, /"softwareVersion": "1\.2\.0"/);
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/issues/);
 });
 
-test("站点发布 v1.1.0 的签名更新源和更新说明", () => {
+test("站点发布 v1.2.0 的签名更新源和更新说明", () => {
   const appcast = readSiteFile("appcast.xml");
-  const releaseNotes = readSiteFile("SuperSent-1.1.0.md");
+  const releaseNotes = readSiteFile("SuperSent-1.2.0.md");
 
-  assert.match(appcast, /<sparkle:version>4<\/sparkle:version>/);
-  assert.match(appcast, /<sparkle:shortVersionString>1\.1\.0<\/sparkle:shortVersionString>/);
-  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.1\.0\/SuperSent-1\.1\.0\.dmg/);
-  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.1\.0\.md/);
+  assert.match(appcast, /<sparkle:version>5<\/sparkle:version>/);
+  assert.match(appcast, /<sparkle:shortVersionString>1\.2\.0<\/sparkle:shortVersionString>/);
+  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.2\.0\/SuperSent-1\.2\.0\.dmg/);
+  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.2\.0\.md/);
   assert.match(appcast, /sparkle:edSignature=/);
   assert.match(appcast, /sparkle-signatures:/);
   assert.match(releaseNotes, /安装更新只替换应用程序本身/);
-  assert.match(releaseNotes, /分类内分组/);
-  assert.match(releaseNotes, /SuperSent-Releases\/releases\/download\/v1\.1\.0\/SuperSent-1\.1\.0\.dmg/);
+  assert.match(releaseNotes, /组合内容/);
+  assert.match(releaseNotes, /全引导式发送/);
+  assert.match(releaseNotes, /SuperSent-Releases\/releases\/download\/v1\.2\.0\/SuperSent-1\.2\.0\.dmg/);
 });
 
-test("首页展示四张经过验收的真实产品截图", () => {
+test("首页展示 v1.2.0 经过验收的真实产品截图", () => {
   const html = readSiteFile("index.html");
 
   for (const screenshot of [
+    "assets/SuperSent-composite-editor-and-preview.png",
+    "assets/SuperSent-search-panel-composite.png",
+    "assets/SuperSent-guided-send-panel.png",
     "assets/SuperSent-category-groups-test-device.png",
-    "assets/SuperSent-main-window.png",
-    "assets/SuperSent-search-panel-1.1.0.png",
-    "assets/SuperSent-file-rename.png"
+    "assets/SuperSent-main-window.png"
   ]) {
     assert.match(html, new RegExp(screenshot.replaceAll(".", "\\.")));
   }
+});
+
+test("公开文案统一使用测试设备示例", () => {
+  const deprecatedCategoryName = ["焚", "烧", "炉"].join("");
+  const publicCopy = [
+    readSiteFile("index.html"),
+    readSiteFile("privacy.html"),
+    readSiteFile("SuperSent-1.1.0.md"),
+    readSiteFile("SuperSent-1.2.0.md")
+  ].join("\n");
+
+  assert.doesNotMatch(publicCopy, new RegExp(deprecatedCategoryName));
 });
 
 test("页面具备 SEO、语义结构与键盘可访问性基础", () => {

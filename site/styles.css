@@ -487,11 +487,11 @@ code {
 
 .search-window-frame {
   position: absolute;
-  right: 46px;
-  bottom: 52px;
+  right: 24px;
+  bottom: 20px;
   z-index: 4;
-  width: min(620px, 96%);
-  border-radius: 18px;
+  width: min(330px, 52%);
+  border-radius: 16px;
   animation: quiet-float 7s ease-in-out infinite;
 }
 
@@ -578,11 +578,13 @@ code {
   grid-template-columns: minmax(310px, 0.7fr) minmax(0, 1.3fr);
 }
 
-.showcase-groups {
+.showcase-groups,
+.showcase-composite {
   grid-template-columns: minmax(320px, 0.68fr) minmax(0, 1.32fr);
 }
 
-.showcase-library {
+.showcase-library,
+.showcase-guided {
   grid-template-columns: minmax(0, 1.28fr) minmax(310px, 0.72fr);
 }
 
@@ -642,6 +644,28 @@ code {
 .product-shot-search img {
   border-radius: 21px;
   transform: rotate(1deg);
+}
+
+.product-shot-composite img {
+  border-radius: 21px;
+  transform: rotate(0.6deg);
+}
+
+.product-shot-guided {
+  width: min(100%, 500px);
+  justify-self: end;
+}
+
+.product-shot-guided::before {
+  inset: -10% -12%;
+  background:
+    radial-gradient(circle at 68% 24%, rgba(36, 116, 200, 0.16), transparent 44%),
+    rgba(220, 234, 248, 0.52);
+}
+
+.product-shot-guided img {
+  border-radius: 24px;
+  transform: rotate(-1deg);
 }
 
 .product-shot-groups {
@@ -1354,17 +1378,21 @@ code {
   }
 
   .showcase-search,
+  .showcase-composite,
+  .showcase-guided,
   .showcase-groups,
   .showcase-library,
   .showcase-rename {
     grid-template-columns: 1fr;
   }
 
-  .showcase-library .product-shot {
+  .showcase-library .product-shot,
+  .showcase-guided .product-shot {
     order: 2;
   }
 
-  .showcase-library .showcase-copy {
+  .showcase-library .showcase-copy,
+  .showcase-guided .showcase-copy {
     order: 1;
   }
 
@@ -1374,6 +1402,10 @@ code {
 
   .product-shot-groups {
     transform: none;
+  }
+
+  .product-shot-guided {
+    justify-self: start;
   }
 }
 
@@ -1462,9 +1494,9 @@ code {
   }
 
   .search-window-frame {
-    right: -4px;
-    bottom: 26px;
-    width: 98%;
+    right: 2px;
+    bottom: 8px;
+    width: 54%;
     border-radius: 12px;
   }
 

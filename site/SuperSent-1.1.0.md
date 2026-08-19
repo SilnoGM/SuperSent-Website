@@ -4,7 +4,7 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 # SuperSent v1.1.0
 
 v1.1.0 在现有分类与条目之间增加了可选分组层级，适合在同一业务分类中继续按用途整理内容。
-例如“焚烧炉”分类可以拆分为“安装、教程、效果展示、参数信息”等分组。
+例如“测试设备”分类可以拆分为“安装、教程、效果展示、参数信息”等分组。
 
 数据库与导入资源继续保存在用户的 `Application Support/SuperSent` 目录。
 安装更新只替换应用程序本身，不会删除现有分类、条目或受管资源。
