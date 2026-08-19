@@ -42,21 +42,27 @@ test("首页包含 v1.2.1 自动更新与组合内容信息", () => {
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/issues/);
 });
 
-test("站点发布 v1.2.0 的签名更新源和更新说明", () => {
+test("站点发布 v1.2.1 的单条签名更新源和更新说明", () => {
   const appcast = readSiteFile("appcast.xml");
-  const releaseNotes = readSiteFile("SuperSent-1.2.0.md");
+  const releaseNotes = readSiteFile("SuperSent-1.2.1.md");
 
-  assert.match(appcast, /<sparkle:version>5<\/sparkle:version>/);
-  assert.match(appcast, /<sparkle:shortVersionString>1\.2\.0<\/sparkle:shortVersionString>/);
+  assert.equal((appcast.match(/<item>/g) ?? []).length, 1);
+  assert.match(appcast, /<sparkle:version>6<\/sparkle:version>/);
+  assert.match(appcast, /<sparkle:shortVersionString>1\.2\.1<\/sparkle:shortVersionString>/);
   assert.match(appcast, /<sparkle:minimumSystemVersion>13\.0<\/sparkle:minimumSystemVersion>/);
-  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.2\.0\/SuperSent-1\.2\.0\.dmg/);
-  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.2\.0\.md/);
+  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.2\.1\/SuperSent-1\.2\.1\.dmg/);
+  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.2\.1\.md/);
+  assert.match(appcast, /SuperSent6-3\.delta" sparkle:deltaFrom="3"/);
+  assert.match(appcast, /SuperSent6-4\.delta" sparkle:deltaFrom="4"/);
+  assert.match(appcast, /SuperSent6-5\.delta" sparkle:deltaFrom="5"/);
+  assert.doesNotMatch(appcast, /releases\/download\/v1\.2\.1\/SuperSent-1\.(?:0\.2|1\.0|2\.0)\.dmg/);
   assert.match(appcast, /sparkle:edSignature=/);
   assert.match(appcast, /sparkle-signatures:/);
   assert.match(releaseNotes, /安装更新只替换应用程序本身/);
-  assert.match(releaseNotes, /组合内容/);
-  assert.match(releaseNotes, /全引导式发送/);
-  assert.match(releaseNotes, /SuperSent-Releases\/releases\/download\/v1\.2\.0\/SuperSent-1\.2\.0\.dmg/);
+  assert.match(releaseNotes, /启动后静默检查一次/);
+  assert.match(releaseNotes, /每四小时检查一次/);
+  assert.match(releaseNotes, /不在后台自动下载或安装更新/);
+  assert.match(releaseNotes, /SuperSent-Releases\/releases\/download\/v1\.2\.1\/SuperSent-1\.2\.1\.dmg/);
 });
 
 test("签名更新源每次请求都会向 CDN 重新验证", () => {

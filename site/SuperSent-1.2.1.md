@@ -1,3 +1,6 @@
+<!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires updating signatures in appcasts that reference this file! This will involve re-running generate_appcast or sign_update.
+-->
 # SuperSent v1.2.1
 
 v1.2.1 新增默认自动更新检查。应用会在启动后静默检查签名更新源，并在运行期间每四小时检查一次；只有发现新版本时才显示更新提示。

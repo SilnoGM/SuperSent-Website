@@ -1,24 +1,26 @@
-<?xml version="1.0" standalone="yes"?>
-<!-- sparkle-sign-warning:
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
--->
-<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>SuperSent</title>
         <item>
-            <title>1.2.0</title>
-            <pubDate>Wed, 19 Aug 2026 13:03:48 +0800</pubDate>
+            <title>1.2.1</title>
+            <pubDate>Wed, 19 Aug 2026 14:23:16 +0800</pubDate>
             <link>https://supersent-website.pages.dev/</link>
-            <sparkle:version>5</sparkle:version>
-            <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
+            <sparkle:version>6</sparkle:version>
+            <sparkle:shortVersionString>1.2.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <sparkle:releaseNotesLink sparkle:edSignature="uSaCDG7/spGCT0QuNqTJt/C/nqs0LRZ4oesy2j+peUf5W87NIJmFtrz0csxd9giQo1XN89cuoUmjtwwDf2SdDw==" sparkle:length="2607">https://supersent-website.pages.dev/SuperSent-1.2.0.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.2.0/SuperSent-1.2.0.dmg" length="4420799" type="application/octet-stream" sparkle:edSignature="dgMeOSaE9q8HN3J2DZ3X2Dq14gOpYf7SiwUqqfJfmEMFDYWiZU37ixSydmarg+SrhMy9PalzCZl/Jn9t9VSTDw=="/>
+            <sparkle:releaseNotesLink sparkle:edSignature="zM6dYEQpglGEZtBbXgPdb7ldg/GGPEvZxzgdxN2bcjPvlZYzcM+Gp8B/DgTvZ5Q1er21e9qyihNKdlR1WkLaCQ==" sparkle:length="2093">https://supersent-website.pages.dev/SuperSent-1.2.1.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.2.1/SuperSent-1.2.1.dmg" length="4423184" type="application/octet-stream" sparkle:edSignature="cAeAxATegilMuimjIbid0/UOuYvZJSbJ2Fmmc1Vze3B9mhPTVV6BLwKwzg+TkgKmXHI6GkQXrMYqmj7MhfzSDw=="></enclosure>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.2.1/SuperSent6-5.delta" sparkle:deltaFrom="5" length="130746" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="EI/cvlcUJ8GtBpv6ZYxUyTus7ok/c4GBJbei1VsHXZi3BaaVBTOh1+59P0HucJOvP4AZqOov9Q188UQVAk1wBQ=="></enclosure>
+                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.2.1/SuperSent6-4.delta" sparkle:deltaFrom="4" length="523386" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="PJvZ29kscI5TNLiFfLG/IFPBTSrcI7IdHqkqiYzkmyDxoFtftAFZxnJNwAn8HLaKNruQQlMfUGnbkqerlzrUCQ=="></enclosure>
+                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.2.1/SuperSent6-3.delta" sparkle:deltaFrom="3" length="603098" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="RI4yZb0OzAZVOA3bJVb68Y2qSKF8yvZa3bFPg3BOFUBIAL1TH0F9QmhTQMPHY7pRuyWAGjoKbjOPVjstNoIWDg=="></enclosure>
+            </sparkle:deltas>
         </item>
     </channel>
-</rss>
-<!-- sparkle-signatures:
-edSignature: rM4hlH2EdkKVa4KkCpjQ84q0vJs8MyXiFeA7Buy7pZwU6W1M/5TsIJulYeFj4Iok88SZHSND1Bo17WAPP+S9DA==
-length: 1438
+</rss><!-- sparkle-signatures:
+edSignature: aNHijipINeiVEm0UfLLVoDaX9dga1sZXOLraRS1sdVkiDznISA7mneqC25lJQQEa+IiF86pRN9yEIdgXFTnZCw==
+length: 2765
 -->
