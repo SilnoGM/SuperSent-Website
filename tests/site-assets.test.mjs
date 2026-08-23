@@ -24,6 +24,9 @@ test("站点必须提供图标、robots 与 404 页面", () => {
   for (const relativePath of [
     "assets/app-icon.png",
     "assets/favicon-32.png",
+    "assets/icon-apple.svg",
+    "assets/icon-windows.svg",
+    "assets/bootstrap-icons-LICENSE.txt",
     "assets/SuperSent-composite-editor-and-preview.png",
     "assets/SuperSent-search-panel-composite.png",
     "assets/SuperSent-guided-send-panel.png",
@@ -33,4 +36,8 @@ test("站点必须提供图标、robots 与 404 页面", () => {
   ]) {
     assert.ok(existsSync(join(siteRoot, relativePath)), `缺少发布资源：site/${relativePath}`);
   }
+
+  // 本地视觉验收必须用正确 MIME 返回 SVG，否则浏览器在 nosniff 模式下会拒绝渲染品牌图标。
+  const previewServer = readFileSync(join(projectRoot, "scripts", "serve.mjs"), "utf8");
+  assert.match(previewServer, /\["\.svg",\s*"image\/svg\+xml"\]/);
 });

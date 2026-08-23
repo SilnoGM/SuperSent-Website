@@ -103,6 +103,16 @@ test("首页严格采用参考 HTML 的单页结构并准确区分双平台快�
   assert.doesNotMatch(html, /双端架构已签名/);
   assert.doesNotMatch(html, /Intel 芯片|Windows on ARM/);
 
+  // 系统选择按钮与下载卡片必须复用同一套本地品牌资产，禁止回退为文字缩写或手写 SVG。
+  assert.equal((html.match(/src="assets\/icon-apple\.svg"/g) ?? []).length, 2);
+  assert.equal((html.match(/src="assets\/icon-windows\.svg"/g) ?? []).length, 2);
+  assert.doesNotMatch(html, /<span class="platform-mark[^>]*>\s*(?:mac|win)\s*<\/span>/i);
+  const heroActions = html.match(/<div class="hero-actions[^>]*>[\s\S]*?<\/div>/)?.[0];
+  assert.ok(heroActions, "首页缺少系统选择按钮区域");
+  assert.doesNotMatch(heroActions, /<svg[\s>]/);
+  assert.match(css, /\.platform-icon\s*\{[\s\S]*?width:\s*18px;[\s\S]*?height:\s*18px;/);
+  assert.match(css, /\.platform-icon-card\s*\{[\s\S]*?width:\s*22px;[\s\S]*?height:\s*22px;/);
+
   // 顶部导航只保留确认后的三个信息入口；所有下载 CTA 先进入同一个系统选择节点。
   assert.match(html, /href="features\.html"[^>]*>核心特性<\/a>/);
   assert.match(html, /href="privacy\.html"[^>]*>隐私与架构<\/a>/);

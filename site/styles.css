@@ -287,6 +287,14 @@ kbd {
   stroke-linejoin: round;
 }
 
+/* 系统入口统一使用本地品牌图标资产；固定尺寸可避免 SVG 自身比例影响按钮文字对齐。 */
+.platform-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
 .button:hover {
   transform: translateY(-2px);
 }
@@ -990,8 +998,9 @@ kbd {
   place-items: center;
 }
 
-.platform-mark-windows {
-  color: #86aee1;
+.platform-icon-card {
+  width: 22px;
+  height: 22px;
 }
 
 .platform-badge {
