@@ -5,14 +5,14 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>SuperSent</title>
         <item>
             <title>1.3.0</title>
-            <pubDate>Sun, 23 Aug 2026 14:01:42 +0800</pubDate>
+            <pubDate>Sun, 23 Aug 2026 14:14:17 +0800</pubDate>
             <link>https://supersent-website.pages.dev/</link>
             <sparkle:version>9</sparkle:version>
             <sparkle:shortVersionString>1.3.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <sparkle:releaseNotesLink sparkle:edSignature="tj7u3s5B6MbKYCVm8q8DKyZY6dbxcEVCuIMEW0qmP4N1xevmWCIGWuHZP1eUJjx12y9UTpruAa9KFN1+WGDmAA==" sparkle:length="1034">https://supersent-website.pages.dev/SuperSent-1.3.0-macos.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.0/SuperSent-1.3.0.dmg" length="4421956" type="application/octet-stream" sparkle:edSignature="reld3/AY9ZFY26Ltmf7Ekiw12zPEwid2bl7jW+A6C/zSvtL6oRsZMtIqCcel+opcgu0EapEikkpiTWjas+YyBQ=="></enclosure>
+            <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.0/SuperSent-1.3.0.dmg" length="4421970" type="application/octet-stream" sparkle:edSignature="VVpBp2KV2RnWT1tO0wgdbp34To2Pu6Cm2EwdNCMEB/1Je1bUHUTuiezUz4ewbg7fMFFfgE+klTVJ+HOiNEReBQ=="></enclosure>
             <sparkle:deltas>
                 <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.0/SuperSent9-8.delta" sparkle:deltaFrom="8" length="8954" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="KRH77gPWkK8Mt9k9XP5DriCRawi+F2GGHYFzNagWk9sVS7HYdalO4bXLa08979k6aehKb7mUXJIqftUnd2qsBw=="></enclosure>
                 <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.0/SuperSent9-7.delta" sparkle:deltaFrom="7" length="159290" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="OOQ6iKEwHcYIGsk2V2fqWwH8S2gJafNsD+22R9EUKSZWYQXjIPXsgauCQNUeZBb0xKyguy/jnpUtDP/J+Cz3Cw=="></enclosure>
@@ -23,6 +23,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: NdBKCb2n/qWmxMJg26mxDWEtAvjgix1TVV2ylo94dmMtbQjksSlGGEZPTJRuCrBy9CTPWaXkWluVAKhqdj7CAQ==
+edSignature: WlRYhyc7V5+e0TGpiJ5pufv1dCcrTvUOspF5KxkWRzPM7ctb8mh6x06R3JYXzQP2kEq8Sah8WKLaIb7Qf983Dg==
 length: 3609
 -->
