@@ -11,13 +11,13 @@ function readSiteFile(relativePath) {
   return readFileSync(absolutePath, "utf8");
 }
 
-test("首页包含 v1.3.0 双平台下载入口、unsigned 提示及完整产品信息", () => {
+test("首页包含 v1.3.1 双平台下载入口、unsigned 提示及完整产品信息", () => {
   const html = readSiteFile("index.html");
   const features = readSiteFile("features.html");
   const publicProductCopy = `${html}\n${features}`;
   const packageManifest = JSON.parse(readFileSync(join(projectRoot, "package.json"), "utf8"));
 
-  assert.equal(packageManifest.version, "1.3.0");
+  assert.equal(packageManifest.version, "1.3.1");
   assert.match(html, /<h1[^>]*>[^<]*SuperSent/s);
   assert.match(html, /macOS 13/);
   assert.match(html, /Apple Silicon/);
@@ -42,22 +42,26 @@ test("首页包含 v1.3.0 双平台下载入口、unsigned 提示及完整产品
   assert.match(publicProductCopy, /只有发现新版本时才显示提示/);
   assert.match(
     html,
-    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0\.dmg/
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.1\/SuperSent-1\.3\.1\.dmg/
   );
   assert.match(
     html,
-    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0-windows-x64-Setup\.exe/
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.1\/SuperSent-1\.3\.1-windows-x64-Setup\.msi/
   );
   assert.match(
     html,
-    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0-windows-x64-Portable\.zip/
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.1\/SuperSent-1\.3\.1-windows-x64-Setup\.exe/
+  );
+  assert.match(
+    html,
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.1\/SuperSent-1\.3\.1-windows-x64-Portable\.zip/
   );
   assert.match(html, /data-platform="macos"/);
   assert.match(html, /data-platform="windows"/);
   assert.match(html, /Windows 安装包当前未进行代码签名/);
   assert.match(html, /SmartScreen/);
-  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.3\.0/);
-  assert.match(html, /"softwareVersion": "1\.3\.0"/);
+  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.3\.1/);
+  assert.match(html, /"softwareVersion": "1\.3\.1"/);
   assert.match(publicProductCopy, /单击[^。]*Enter/);
   assert.match(publicProductCopy, /双击[^。]*Enter/);
   assert.match(publicProductCopy, /光标[^。]*查询词末尾/);
@@ -160,26 +164,24 @@ test("核心特性独立页完整介绍当前正式版的四十一个功能点",
   assert.match(html, /全局搜索无需授权/);
 });
 
-test("M5.2b 使用真实签名的 v1.3.0 macOS 更新源并保持平台隔离", () => {
+test("v1.3.1 使用真实签名的 macOS 更新源并保持平台隔离", () => {
   const appcast = readSiteFile("appcast.xml");
-  const releaseNotes = readSiteFile("SuperSent-1.3.0-macos.md");
+  const releaseNotes = readSiteFile("SuperSent-1.3.1-macos.md");
 
   assert.equal((appcast.match(/<item>/g) ?? []).length, 1);
-  assert.match(appcast, /<sparkle:version>9<\/sparkle:version>/);
-  assert.match(appcast, /<sparkle:shortVersionString>1\.3\.0<\/sparkle:shortVersionString>/);
+  assert.match(appcast, /<sparkle:version>10<\/sparkle:version>/);
+  assert.match(appcast, /<sparkle:shortVersionString>1\.3\.1<\/sparkle:shortVersionString>/);
   assert.match(appcast, /<sparkle:minimumSystemVersion>13\.0<\/sparkle:minimumSystemVersion>/);
   assert.match(appcast, /<sparkle:hardwareRequirements>arm64<\/sparkle:hardwareRequirements>/);
-  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0\.dmg/);
-  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.3\.0-macos\.md/);
+  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.3\.1\/SuperSent-1\.3\.1\.dmg/);
+  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.3\.1-macos\.md/);
   assert.match(appcast, /<sparkle:deltas>/);
-  for (const previousBuild of [8, 7, 6, 5, 3]) {
-    assert.match(appcast, new RegExp(`SuperSent9-${previousBuild}\\.delta`));
-  }
+  assert.match(appcast, /SuperSent10-9\.delta/);
   assert.doesNotMatch(appcast, /windows-x64|Setup\.exe|Portable\.zip|Velopack/i);
   assert.doesNotMatch(appcast, /releases\/download\/v1\.(?:0\.2|1\.0|2\.0|2\.1|2\.2|2\.3)\/SuperSent-/);
   assert.match(appcast, /sparkle:edSignature=/);
   assert.match(appcast, /sparkle-signatures:/);
-  assert.match(releaseNotes, /软件优化/);
+  assert.match(releaseNotes, /Command\+A/);
   assert.match(releaseNotes, /更新只替换应用程序本身/);
   assert.doesNotMatch(releaseNotes, /Windows|Setup\.exe|win-x64/);
 });
