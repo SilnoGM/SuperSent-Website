@@ -120,7 +120,7 @@ test("首页完整介绍当前正式版的四十一个功能点", () => {
 
 test("M5.2b 使用真实签名的 v1.3.0 macOS 更新源并保持平台隔离", () => {
   const appcast = readSiteFile("appcast.xml");
-  const releaseNotes = readSiteFile("SuperSent-1.3.0.md");
+  const releaseNotes = readSiteFile("SuperSent-1.3.0-macos.md");
 
   assert.equal((appcast.match(/<item>/g) ?? []).length, 1);
   assert.match(appcast, /<sparkle:version>9<\/sparkle:version>/);
@@ -128,7 +128,7 @@ test("M5.2b 使用真实签名的 v1.3.0 macOS 更新源并保持平台隔离", 
   assert.match(appcast, /<sparkle:minimumSystemVersion>13\.0<\/sparkle:minimumSystemVersion>/);
   assert.match(appcast, /<sparkle:hardwareRequirements>arm64<\/sparkle:hardwareRequirements>/);
   assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0\.dmg/);
-  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.3\.0\.md/);
+  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.3\.0-macos\.md/);
   assert.match(appcast, /<sparkle:deltas>/);
   for (const previousBuild of [8, 7, 6, 5, 3]) {
     assert.match(appcast, new RegExp(`SuperSent9-${previousBuild}\\.delta`));
