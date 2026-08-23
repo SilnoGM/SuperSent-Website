@@ -48,14 +48,18 @@ test("首页包含 v1.3.1 双平台下载入口、unsigned 提示及完整产品
     html,
     /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.1\/SuperSent-1\.3\.1-windows-x64-Setup\.msi/
   );
-  assert.match(
+  assert.match(html, />下载SuperSent for Win\(\.msi\)<\/a>/);
+
+  // 官网只公开推荐的 MSI 下载入口；一键安装版和便携包仍可保留在 Release 资产中，但不能出现在首页。
+  assert.doesNotMatch(
     html,
     /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.1\/SuperSent-1\.3\.1-windows-x64-Setup\.exe/
   );
-  assert.match(
+  assert.doesNotMatch(
     html,
     /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.1\/SuperSent-1\.3\.1-windows-x64-Portable\.zip/
   );
+  assert.doesNotMatch(html, /一键安装 \(\.exe\)|下载便携包 \(\.zip\)/);
   assert.match(html, /data-platform="macos"/);
   assert.match(html, /data-platform="windows"/);
   assert.match(html, /Windows 安装包当前未进行代码签名/);
