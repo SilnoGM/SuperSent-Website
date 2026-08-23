@@ -11,13 +11,18 @@ function readSiteFile(relativePath) {
   return readFileSync(absolutePath, "utf8");
 }
 
-test("首页包含 v1.2.3 鼠标与键盘协同修复及完整产品信息", () => {
+test("首页包含 v1.3.0 双平台下载入口、unsigned 提示及完整产品信息", () => {
   const html = readSiteFile("index.html");
+  const packageManifest = JSON.parse(readFileSync(join(projectRoot, "package.json"), "utf8"));
 
+  assert.equal(packageManifest.version, "1.3.0");
   assert.match(html, /<h1[^>]*>[^<]*SuperSent/s);
   assert.match(html, /macOS 13/);
   assert.match(html, /Apple Silicon/);
+  assert.match(html, /Windows 10 20H2/);
+  assert.match(html, /x64/);
   assert.match(html, /⌘⇧Space/);
+  assert.match(html, /Ctrl\+Shift\+Space/);
   assert.match(html, /视频/);
   assert.match(html, /保存前重命名/);
   assert.match(html, /变量模板/);
@@ -35,10 +40,22 @@ test("首页包含 v1.2.3 鼠标与键盘协同修复及完整产品信息", () 
   assert.match(html, /只有发现新版本时才显示提示/);
   assert.match(
     html,
-    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.2\.3\/SuperSent-1\.2\.3\.dmg/
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0\.dmg/
   );
-  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.2\.3/);
-  assert.match(html, /"softwareVersion": "1\.2\.3"/);
+  assert.match(
+    html,
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0-windows-x64-Setup\.exe/
+  );
+  assert.match(
+    html,
+    /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0-windows-x64-Portable\.zip/
+  );
+  assert.match(html, /data-platform="macos"/);
+  assert.match(html, /data-platform="windows"/);
+  assert.match(html, /Windows 安装包当前未进行代码签名/);
+  assert.match(html, /SmartScreen/);
+  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.3\.0/);
+  assert.match(html, /"softwareVersion": "1\.3\.0"/);
   assert.match(html, /单击[^。]*Enter/);
   assert.match(html, /双击[^。]*Enter/);
   assert.match(html, /光标[^。]*查询词末尾/);
@@ -101,7 +118,7 @@ test("首页完整介绍当前正式版的四十一个功能点", () => {
   assert.match(html, /全局搜索无需授权/);
 });
 
-test("站点发布 v1.2.3 的单条签名更新源、增量包和更新说明", () => {
+test("M5.2a 本地候选仍保留已发布 v1.2.3 的签名更新源，禁止伪造 v1.3.0 appcast", () => {
   const appcast = readSiteFile("appcast.xml");
   const releaseNotes = readSiteFile("SuperSent-1.2.3.md");
 
@@ -193,6 +210,10 @@ test("隐私页如实说明本地数据与辅助功能权限边界", () => {
   assert.match(html, /默认自动检查/);
   assert.match(html, /每四小时检查一次/);
   assert.match(html, /不会上传内容库/);
+  assert.match(html, /Windows/);
+  assert.match(html, /%APPDATA%/);
+  assert.match(html, /用户选择/);
+  assert.match(html, /不读取、关联或迁移/);
 });
 
 test("公开页面不加载第三方脚本、追踪器或非 HTTPS 资源", () => {
