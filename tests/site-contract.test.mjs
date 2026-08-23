@@ -13,6 +13,8 @@ function readSiteFile(relativePath) {
 
 test("首页包含 v1.3.0 双平台下载入口、unsigned 提示及完整产品信息", () => {
   const html = readSiteFile("index.html");
+  const features = readSiteFile("features.html");
+  const publicProductCopy = `${html}\n${features}`;
   const packageManifest = JSON.parse(readFileSync(join(projectRoot, "package.json"), "utf8"));
 
   assert.equal(packageManifest.version, "1.3.0");
@@ -23,21 +25,21 @@ test("首页包含 v1.3.0 双平台下载入口、unsigned 提示及完整产品
   assert.match(html, /x64/);
   assert.match(html, /⌘⇧Space/);
   assert.match(html, /Ctrl\+Shift\+Space/);
-  assert.match(html, /视频/);
-  assert.match(html, /保存前重命名/);
-  assert.match(html, /变量模板/);
-  assert.match(html, /分类分组/);
-  assert.match(html, /组合内容/);
-  assert.match(html, /全引导式发送/);
-  assert.match(html, /逐项预览/);
-  assert.match(html, /粘贴、跳过、取消/);
-  assert.match(html, /测试设备/);
+  assert.match(publicProductCopy, /视频/);
+  assert.match(publicProductCopy, /保存前重命名/);
+  assert.match(publicProductCopy, /变量模板/);
+  assert.match(publicProductCopy, /分类分组/);
+  assert.match(publicProductCopy, /组合内容/);
+  assert.match(publicProductCopy, /全引导式发送/);
+  assert.match(publicProductCopy, /逐项预览/);
+  assert.match(publicProductCopy, /粘贴、跳过、取消/);
+  assert.match(publicProductCopy, /测试设备/);
   const deprecatedCategoryName = ["焚", "烧", "炉"].join("");
-  assert.doesNotMatch(html, new RegExp(deprecatedCategoryName));
-  assert.match(html, /安装、教程、效果展示、参数信息/);
-  assert.match(html, /检查更新/);
-  assert.match(html, /每四小时检查一次/);
-  assert.match(html, /只有发现新版本时才显示提示/);
+  assert.doesNotMatch(publicProductCopy, new RegExp(deprecatedCategoryName));
+  assert.match(publicProductCopy, /安装、教程、效果展示、参数信息/);
+  assert.match(publicProductCopy, /检查更新/);
+  assert.match(publicProductCopy, /每四小时检查一次/);
+  assert.match(publicProductCopy, /只有发现新版本时才显示提示/);
   assert.match(
     html,
     /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0\.dmg/
@@ -56,24 +58,25 @@ test("首页包含 v1.3.0 双平台下载入口、unsigned 提示及完整产品
   assert.match(html, /SmartScreen/);
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.3\.0/);
   assert.match(html, /"softwareVersion": "1\.3\.0"/);
-  assert.match(html, /单击[^。]*Enter/);
-  assert.match(html, /双击[^。]*Enter/);
-  assert.match(html, /光标[^。]*查询词末尾/);
+  assert.match(publicProductCopy, /单击[^。]*Enter/);
+  assert.match(publicProductCopy, /双击[^。]*Enter/);
+  assert.match(publicProductCopy, /光标[^。]*查询词末尾/);
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/issues/);
 });
 
-test("首页采用深色 HUD 视觉并准确区分双平台快捷键与分发边界", () => {
+test("首页严格采用参考 HTML 的单页结构并准确区分双平台快捷键与分发边界", () => {
   const html = readSiteFile("index.html");
   const css = readSiteFile("styles.css");
 
-  // 视觉复刻必须落在本地 HTML/CSS 中，不能依赖参考稿里的 Tailwind CDN 或第三方图标脚本。
+  // 首页复刻必须落在本地 HTML/CSS 中，不能依赖参考稿里的 Tailwind CDN 或第三方图标脚本。
   for (const landmark of [
     "floating-nav-shell",
     "hero-status",
     "shortcut-guide",
-    "interface-stage",
+    "hero-workspace",
     "feature-bento",
-    "privacy-spec-grid"
+    "privacy-architecture-preview",
+    "download-grid"
   ]) {
     assert.match(html, new RegExp(`class="[^"]*${landmark}`));
   }
@@ -91,10 +94,17 @@ test("首页采用深色 HUD 视觉并准确区分双平台快捷键与分发边
   assert.match(html, /Windows 当前未签名/);
   assert.doesNotMatch(html, /双端架构已签名/);
   assert.doesNotMatch(html, /Intel 芯片|Windows on ARM/);
+
+  // 顶部导航只保留确认后的三个信息入口；所有下载 CTA 先进入同一个系统选择节点。
+  assert.match(html, /href="features\.html"[^>]*>核心特性<\/a>/);
+  assert.match(html, /href="privacy\.html"[^>]*>隐私与架构<\/a>/);
+  assert.match(html, /href="#download"[^>]*>多端下载<\/a>/);
+  assert.match(html, /href="#download"[^>]*>[\s\S]*?免费下载[\s\S]*?<\/a>/);
+  assert.doesNotMatch(html, /<a[^>]+href="[^"]*guided[^"]*"[^>]*>引导式发送<\/a>/);
 });
 
-test("首页完整介绍当前正式版的四十一个功能点", () => {
-  const html = readSiteFile("index.html");
+test("核心特性独立页完整介绍当前正式版的四十一个功能点", () => {
+  const html = readSiteFile("features.html");
   const publishedFeatures = [...html.matchAll(/data-feature="([^"]+)"/g)]
     .map((match) => match[1]);
 
@@ -142,7 +152,8 @@ test("首页完整介绍当前正式版的四十一个功能点", () => {
     "system-requirements"
   ]);
 
-  assert.match(html, /href="#capabilities">全部功能<\/a>/);
+  assert.match(html, /全引导式发送/);
+  assert.match(html, /href="\/#download"[^>]*>多端下载<\/a>/);
   assert.match(html, /只有空分组可删除/);
   assert.match(html, /多关键词 AND 搜索/);
   assert.match(html, /不会自动点击第三方应用的发送、发布或提交按钮/);
@@ -182,17 +193,21 @@ test("签名更新源每次请求都会向 CDN 重新验证", () => {
   );
 });
 
-test("首页展示经过验收的真实产品截图", () => {
-  const html = readSiteFile("index.html");
+test("首页不展示实景图片，核心特性独立页使用经过验收的真实产品截图", () => {
+  const home = readSiteFile("index.html");
+  const features = readSiteFile("features.html");
 
   for (const screenshot of [
     "assets/SuperSent-composite-editor-and-preview.png",
     "assets/SuperSent-search-panel-composite.png",
     "assets/SuperSent-guided-send-panel.png",
     "assets/SuperSent-category-groups-test-device.png",
-    "assets/SuperSent-main-window.png"
+    "assets/SuperSent-main-window.png",
+    "assets/SuperSent-file-rename.png"
   ]) {
-    assert.match(html, new RegExp(screenshot.replaceAll(".", "\\.")));
+    const screenshotPattern = new RegExp(screenshot.replaceAll(".", "\\."));
+    assert.doesNotMatch(home, screenshotPattern);
+    assert.match(features, screenshotPattern);
   }
 });
 
@@ -200,6 +215,7 @@ test("公开文案统一使用测试设备示例", () => {
   const deprecatedCategoryName = ["焚", "烧", "炉"].join("");
   const publicCopy = [
     readSiteFile("index.html"),
+    readSiteFile("features.html"),
     readSiteFile("privacy.html"),
     readSiteFile("SuperSent-1.1.0.md"),
     readSiteFile("SuperSent-1.2.0.md"),
@@ -231,6 +247,7 @@ test("页面具备 SEO、语义结构与键盘可访问性基础", () => {
 test("隐私页如实说明本地数据与辅助功能权限边界", () => {
   const html = readSiteFile("privacy.html");
 
+  assert.match(html, /隐私与架构/);
   assert.match(html, /无需账户/);
   assert.match(html, /Application Support/);
   assert.match(html, /不提供云同步/);
@@ -248,7 +265,11 @@ test("隐私页如实说明本地数据与辅助功能权限边界", () => {
 });
 
 test("公开页面不加载第三方脚本、追踪器或非 HTTPS 资源", () => {
-  const pages = [readSiteFile("index.html"), readSiteFile("privacy.html")].join("\n");
+  const pages = [
+    readSiteFile("index.html"),
+    readSiteFile("features.html"),
+    readSiteFile("privacy.html")
+  ].join("\n");
 
   assert.doesNotMatch(pages, /<script[^>]+src="https?:\/\//);
   assert.doesNotMatch(pages, /google-analytics|googletagmanager|plausible|umami|segment|mixpanel/i);
@@ -256,7 +277,12 @@ test("公开页面不加载第三方脚本、追踪器或非 HTTPS 资源", () =
 });
 
 test("公开页面不使用会被严格 CSP 拦截的内联样式", () => {
-  const pages = [readSiteFile("index.html"), readSiteFile("privacy.html"), readSiteFile("404.html")].join("\n");
+  const pages = [
+    readSiteFile("index.html"),
+    readSiteFile("features.html"),
+    readSiteFile("privacy.html"),
+    readSiteFile("404.html")
+  ].join("\n");
 
   assert.doesNotMatch(pages, /\sstyle\s*=/i);
 });
@@ -270,4 +296,11 @@ test("整站使用受控的响应式排版尺度", () => {
   assert.match(css, /--type-legal-hero:\s*clamp\(2\.8rem,\s*5vw,\s*4\.5rem\)/);
   assert.match(css, /--measure-copy:\s*58ch/);
   assert.match(css, /\.hero h1\s*\{[^}]*font-size:\s*var\(--type-hero\)/s);
+});
+
+test("站点地图收录核心特性与隐私架构独立页", () => {
+  const sitemap = readSiteFile("sitemap.xml");
+
+  assert.match(sitemap, /\{\{SITE_URL\}\}\/features\.html/);
+  assert.match(sitemap, /\{\{SITE_URL\}\}\/privacy\.html/);
 });

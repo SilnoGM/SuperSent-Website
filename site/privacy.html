@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>隐私说明 — SuperSent</title>
+    <title>隐私与架构 — SuperSent</title>
     <meta
       name="description"
-      content="了解 SuperSent 如何在本机保存内容，以及剪贴板、文件选择和辅助功能权限的使用边界。"
+      content="了解 SuperSent 的本地数据架构、双平台隔离方式，以及剪贴板、文件选择、辅助功能权限和更新通道的使用边界。"
     >
     <meta name="theme-color" content="#090a0f">
     <meta name="color-scheme" content="dark">
@@ -17,30 +17,48 @@
     <script src="site.js" defer></script>
   </head>
   <body class="legal-page">
-    <a class="skip-link" href="#privacy-content">跳到隐私说明</a>
+    <a class="skip-link" href="#privacy-content">跳到隐私与架构说明</a>
 
+    <!-- 隐私与架构页使用与主页一致的导航，并将全部下载入口返回统一系统选择节点。 -->
     <header class="site-header">
-      <div class="container nav-shell legal-nav floating-nav-shell glass-panel">
-        <a class="brand" href="/" aria-label="返回 SuperSent 首页">
-          <img src="assets/app-icon.png" width="42" height="42" alt="">
+      <div class="container nav-shell floating-nav-shell glass-panel">
+        <a class="brand" href="/" aria-label="SuperSent 首页">
+          <img src="assets/app-icon.png" width="36" height="36" alt="">
           <span>SuperSent</span>
+          <span class="version-badge">v1.3.0</span>
         </a>
-        <a class="text-link" href="/">
-          返回首页
-          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 6 6-6 6"></path></svg>
-        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+          aria-label="打开导航菜单"
+        >
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav id="primary-navigation" class="primary-navigation" aria-label="主要导航">
+          <a href="features.html">核心特性</a>
+          <a href="privacy.html" aria-current="page">隐私与架构</a>
+          <a href="/#download">多端下载</a>
+          <a class="button button-small button-light" href="/#download">免费下载</a>
+        </nav>
       </div>
     </header>
 
     <main id="privacy-content" class="legal-main">
       <div class="container legal-layout">
         <aside class="legal-aside">
-          <p class="eyebrow">隐私说明</p>
-          <nav aria-label="隐私说明目录">
+          <p class="eyebrow">隐私与架构</p>
+          <nav aria-label="隐私与架构目录">
             <a href="#summary">概要</a>
+            <a href="#architecture">平台架构</a>
             <a href="#storage">本地存储</a>
             <a href="#permissions">权限用途</a>
             <a href="#network">网络与追踪</a>
+            <a href="#distribution">发布与更新</a>
             <a href="#control">用户控制</a>
             <a href="#contact">问题反馈</a>
           </nav>
@@ -49,7 +67,7 @@
         <article class="legal-article">
           <header class="legal-title">
             <p class="section-index">最后更新：2026 年 8 月 23 日</p>
-            <h1>SuperSent 隐私说明</h1>
+            <h1>SuperSent 隐私与架构</h1>
             <p>
               SuperSent 1.3.0 是一款本地运行的 macOS 与 Windows 内容工具。无需账户，不提供云同步，内容库不会由应用上传到 SuperSent 服务器。
             </p>
@@ -64,6 +82,26 @@
               <li>默认自动检查只获取签名版本信息，安装仍需你确认，不会上传内容库。</li>
               <li>自动粘贴权限可以不授予，复制功能仍然可用。</li>
             </ul>
+          </section>
+
+          <!-- 平台架构单独说明两个客户端的边界，避免暗示跨系统读取或自动迁移数据。 -->
+          <section id="architecture">
+            <h2>平台架构</h2>
+            <p>
+              SuperSent 的 macOS 与 Windows 应用共享产品规则和版本号，但分别使用原生客户端、独立数据目录和独立更新通道。两个平台不会读取、关联或迁移彼此的数据。
+            </p>
+            <div class="architecture-grid">
+              <article class="glass-panel">
+                <span>macOS</span>
+                <h3>原生客户端与签名更新源</h3>
+                <p>应用数据保存在当前 macOS 用户目录；自动更新仅读取 macOS 签名 appcast，并校验 Apple Developer ID、公证和 Sparkle 签名。</p>
+              </article>
+              <article class="glass-panel">
+                <span>Windows</span>
+                <h3>x64 客户端与独立更新源</h3>
+                <p>首次启动时由用户选择数据目录；Windows 10 20H2+ x64 版本只读取自己的更新源，不读取 macOS 数据或 appcast。</p>
+              </article>
+            </div>
           </section>
 
           <section id="storage">
@@ -127,6 +165,24 @@
             </p>
           </section>
 
+          <section id="distribution">
+            <h2>发布与更新</h2>
+            <div class="permission-list">
+              <div>
+                <h3>macOS 签名与公证</h3>
+                <p>macOS 应用和 DMG 使用 Apple Developer ID 签名并通过公证；Sparkle 更新包还会校验独立的 EdDSA 签名。</p>
+              </div>
+              <div>
+                <h3>Windows 未签名状态</h3>
+                <p>Windows 当前安装包未进行代码签名，系统可能显示 SmartScreen 确认提示；官网不会把它描述为已签名安装包。</p>
+              </div>
+              <div>
+                <h3>更新不迁移用户数据</h3>
+                <p>更新只替换当前平台的程序文件，分类、分组、条目、数据库和受管资源继续保留在原数据目录。</p>
+              </div>
+            </div>
+          </section>
+
           <section id="control">
             <h2>用户控制</h2>
             <p>
@@ -152,9 +208,10 @@
 
     <footer class="site-footer legal-footer">
       <div class="container footer-grid">
-        <p>SuperSent 1.3.0 · 本地优先的 macOS 与 Windows 内容工具</p>
+        <p>SuperSent 1.3.0 · 本地数据与双平台架构说明</p>
         <div class="footer-links">
           <a href="/">首页</a>
+          <a href="features.html">核心特性</a>
           <a href="https://github.com/SilnoGM/SuperSent-Releases/releases/tag/v1.3.0">发布说明</a>
         </div>
         <p class="copyright">© <span data-current-year>2026</span> SuperSent</p>

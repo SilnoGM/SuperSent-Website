@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-CN" class="dark-theme scroll-smooth">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>核心特性 — SuperSent</title>
+    <meta
+      name="description"
+      content="通过真实 SuperSent 产品界面，了解内容创建、分类分组、全局搜索、全引导式发送以及本地数据与更新能力。"
+    >
+    <meta name="theme-color" content="#090a0f">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="{{SITE_URL}}/features.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+    <link rel="apple-touch-icon" href="assets/app-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:title" content="SuperSent 核心特性">
+    <meta property="og:description" content="当前正式版 41 项能力及真实产品界面说明。">
+    <meta property="og:url" content="{{SITE_URL}}/features.html">
+    <meta property="og:image" content="{{SITE_URL}}/assets/SuperSent-search-panel-composite.png">
+    <meta property="og:image:alt" content="SuperSent 搜索面板真实界面">
+    <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
+  </head>
+  <body class="detail-page">
+    <a class="skip-link" href="#feature-content">跳到核心特性</a>
+
+    <!-- 独立页沿用主页悬浮导航；下载相关入口统一返回主页的系统选择节点。 -->
+    <header class="site-header">
+      <div class="container nav-shell floating-nav-shell glass-panel">
+        <a class="brand" href="/" aria-label="SuperSent 首页">
+          <img src="assets/app-icon.png" width="36" height="36" alt="">
+          <span>SuperSent</span>
+          <span class="version-badge">v1.3.0</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+          aria-label="打开导航菜单"
+        >
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav id="primary-navigation" class="primary-navigation" aria-label="主要导航">
+          <a href="features.html" aria-current="page">核心特性</a>
+          <a href="privacy.html">隐私与架构</a>
+          <a href="/#download">多端下载</a>
+          <a class="button button-small button-light" href="/#download">免费下载</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="feature-content">
+      <section class="detail-hero feature-page-hero">
+        <div class="container detail-hero-grid">
+          <div>
+            <p class="section-index">CORE CAPABILITIES / 01—41</p>
+            <h1>每一项功能，都能在真实窗口中找到对应位置。</h1>
+          </div>
+          <div>
+            <p>
+              以下内容来自 SuperSent 1.3.0 正式版。六组真实界面截图对应创建、组织、搜索、发送与系统能力；
+              不包含路线图或尚未发布的功能。
+            </p>
+            <div class="detail-meta"><span>41 项已发布能力</span><span>6 张真实界面</span><span>macOS + Windows</span></div>
+          </div>
+        </div>
+
+        <nav class="container feature-toc glass-panel" aria-label="核心特性目录">
+          <a href="#create"><span>A</span>创建与内容</a>
+          <a href="#organize"><span>B</span>组织与管理</a>
+          <a href="#find"><span>C</span>搜索与预览</a>
+          <a href="#send"><span>D</span>引导式发送</a>
+          <a href="#system"><span>E</span>系统与更新</a>
+        </nav>
+      </section>
+
+      <!-- A：组合编辑器和重命名弹窗共同证明内容创建、媒体管理与保存前校验。 -->
+      <section id="create" class="feature-chapter section">
+        <div class="container chapter-heading reveal">
+          <p class="section-index">A / CREATE</p>
+          <div><h2>创建与内容类型</h2><p>五种条目类型，共用标题、归属和检索能力。</p></div>
+        </div>
+
+        <div class="container chapter-layout reveal">
+          <div class="chapter-media media-stack">
+            <figure class="product-shot glass-panel">
+              <img
+                src="assets/SuperSent-composite-editor-and-preview.png"
+                width="1320"
+                height="1240"
+                alt="SuperSent 组合内容编辑器展示文字和视频内容块，以及与顺序一致的正文预览"
+              >
+              <figcaption><span>01</span>组合内容编辑器与保存前整体预览</figcaption>
+            </figure>
+            <figure class="product-shot product-shot-compact glass-panel">
+              <img
+                src="assets/SuperSent-file-rename.png"
+                width="1320"
+                height="560"
+                loading="lazy"
+                alt="SuperSent 文件保存前重命名界面，显示不可变扩展名和同名冲突提示"
+              >
+              <figcaption><span>02</span>保存前重命名与冲突保护</figcaption>
+            </figure>
+          </div>
+
+          <div class="feature-detail-grid">
+            <article class="feature-detail" data-feature="text-content"><span>01</span><h3>纯文本与链接</h3><p>保存普通文字、多段说明和 URL；链接按完整纯文本参与搜索、复制与粘贴，不转换成独立内容类型。</p></article>
+            <article class="feature-detail" data-feature="image-content"><span>02</span><h3>图片内容</h3><p>导入图片到受管资源目录，在主窗口和搜索面板预览，并以系统图片格式写入剪贴板。</p></article>
+            <article class="feature-detail" data-feature="file-video-content"><span>03</span><h3>文件与视频</h3><p>保存普通文件；常见视频仍属于文件内容，但会被识别并在主窗口、搜索面板中直接播放。</p></article>
+            <article class="feature-detail" data-feature="variable-template"><span>04</span><h3>变量模板</h3><p>使用 <code>{变量名:提示文字}</code> 定义动态字段；发送前按出现顺序填写，重复变量只询问一次。</p></article>
+            <article class="feature-detail" data-feature="composite-content"><span>05</span><h3>组合内容</h3><p>在一个条目中添加文字、图片和视频块，支持删除、拖动排序和保存前整体预览；全部内容块事务化保存。</p></article>
+            <article class="feature-detail" data-feature="import-rename"><span>06</span><h3>导入与保存前重命名</h3><p>图片、视频和文件先进入临时区，可在入库前改名；扩展名保持不变，同名冲突会提示且绝不覆盖。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- B：分类分组真实界面说明三栏资料库、归属继承以及安全资源管理。 -->
+      <section id="organize" class="feature-chapter section chapter-tinted">
+        <div class="container chapter-heading reveal">
+          <p class="section-index">B / ORGANIZE</p>
+          <div><h2>组织与内容管理</h2><p>从条目字段到分类树，持续保持资料库可维护。</p></div>
+        </div>
+
+        <div class="container chapter-layout chapter-layout-reverse reveal">
+          <figure class="product-shot glass-panel chapter-media">
+            <img
+              src="assets/SuperSent-category-groups-test-device.png"
+              width="2160"
+              height="1440"
+              loading="lazy"
+              alt="SuperSent 主窗口展示测试设备分类下的安装、教程、效果展示和参数信息分组"
+            >
+            <figcaption><span>03</span>测试设备分类下的安装、教程、效果展示、参数信息分组</figcaption>
+          </figure>
+
+          <div class="feature-detail-grid">
+            <article class="feature-detail" data-feature="item-fields"><span>07</span><h3>完整条目字段</h3><p>每条内容都可设置标题、类型、分类、分组、标签和别名；组合内容沿用同一套元数据。</p></article>
+            <article class="feature-detail" data-feature="item-crud"><span>08</span><h3>新建、编辑与删除</h3><p>主窗口直接创建和修改条目；删除前确认，并在数据库操作成功后才清理对应受管资源。</p></article>
+            <article class="feature-detail" data-feature="category-management"><span>09</span><h3>分类管理</h3><p>创建分类并查看条目数量；删除分类时保留其中条目，只清空分类和分组归属，避免误删内容。</p></article>
+            <article class="feature-detail" data-feature="group-management"><span>10</span><h3>分类内分组</h3><p>分组支持新建、重命名、上移、下移和删除；只有空分组可删除，同分类内不允许重名。</p></article>
+            <article class="feature-detail" data-feature="library-views"><span>11</span><h3>全部、高频与未分组视图</h3><p>侧栏显示全部内容、高频常用、分类、真实分组和计算得到的“未分组”，每个节点同步展示数量。</p></article>
+            <article class="feature-detail" data-feature="inherited-placement"><span>12</span><h3>自动继承当前位置</h3><p>从分类、分组或未分组节点新建条目时，编辑器自动带入对应归属，并拒绝跨分类的无效分组。</p></article>
+            <article class="feature-detail" data-feature="list-filter-sort"><span>13</span><h3>主窗口筛选与排序</h3><p>条目列表可按标题或标签即时筛选，并按最近使用时间或最近编辑时间排列。</p></article>
+            <article class="feature-detail" data-feature="asset-safety"><span>14</span><h3>受管资源安全清理</h3><p>资源按图片、视频、文档、压缩包和音频等目录整理；共享资源、外部文件、符号链接和越界路径不会被误删。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- C：搜索面板截图与键盘规则共同说明全局检索的真实交互。 -->
+      <section id="find" class="feature-chapter section">
+        <div class="container chapter-heading reveal">
+          <p class="section-index">C / FIND</p>
+          <div><h2>搜索与预览</h2><p>不离开当前应用，用键盘找到并确认目标内容。</p></div>
+        </div>
+
+        <div class="container chapter-layout reveal">
+          <figure class="product-shot glass-panel chapter-media">
+            <img
+              src="assets/SuperSent-search-panel-composite.png"
+              width="1520"
+              height="880"
+              loading="lazy"
+              alt="SuperSent 搜索面板展示测试设备组合内容、关键词高亮和有序预览"
+            >
+            <figcaption><span>04</span>组合内容搜索结果与右侧顺序预览</figcaption>
+          </figure>
+
+          <div class="feature-detail-grid">
+            <article class="feature-detail" data-feature="global-hotkey"><span>15</span><h3>全局快捷键</h3><p>在任意应用中，macOS 按 <kbd>⌘ ⇧ Space</kbd>、Windows 按 <kbd>Ctrl+Shift+Space</kbd> 打开或关闭悬浮搜索面板；注册快捷键本身不需要 macOS 辅助功能权限。</p></article>
+            <article class="feature-detail" data-feature="search-fields"><span>16</span><h3>多字段检索</h3><p>同时搜索标题、正文、标签和别名；组合条目额外索引文字块与媒体文件名，不索引本地完整路径。</p></article>
+            <article class="feature-detail" data-feature="multi-keyword-search"><span>17</span><h3>多关键词 AND 搜索</h3><p>用空格输入多个关键词时，每个词都必须命中，可跨标题、正文和不同组合内容块共同匹配。</p></article>
+            <article class="feature-detail" data-feature="pinyin-search"><span>18</span><h3>拼音与首字母</h3><p>中文标题支持全拼和拼音首字母；组合文字内容也参与首字母检索，无需安装第三方词库。</p></article>
+            <article class="feature-detail" data-feature="relevance-ranking"><span>19</span><h3>相关度与常用度排序</h3><p>精确别名、标题前缀、标签、正文等按相关度评分；分数相同时，使用次数更高的内容优先。</p></article>
+            <article class="feature-detail" data-feature="keyboard-navigation"><span>20</span><h3>键盘与鼠标协同</h3><p>使用 <kbd>↑</kbd><kbd>↓</kbd> 切换结果、<kbd>Enter</kbd> 执行动作、<kbd>Esc</kbd> 关闭；macOS 用 <kbd>⌥ Enter</kbd>、Windows 用 <kbd>Alt+Enter</kbd> 仅复制。单击结果后可直接按 <kbd>Enter</kbd>，双击结果等同 <kbd>Enter</kbd>；搜索光标会停在查询词末尾。</p></article>
+            <article class="feature-detail" data-feature="location-path"><span>21</span><h3>分类路径提示</h3><p>搜索结果显示“分类 / 分组”、仅分类或“无分类”，帮助区分同名内容，但路径不会改变搜索命中。</p></article>
+            <article class="feature-detail" data-feature="media-preview"><span>22</span><h3>右侧完整预览</h3><p>文本和模板显示可读正文，图片显示缩略图，视频提供播放控制，组合内容按真实顺序呈现全部块。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- D：全引导式发送归入核心特性，不再占用顶部导航入口。 -->
+      <section id="send" class="feature-chapter section chapter-tinted">
+        <div class="container chapter-heading reveal">
+          <p class="section-index">D / SEND</p>
+          <div><h2>复制与全引导式发送</h2><p>从单条快捷粘贴，到每块都由鼠标确认的组合流程。</p></div>
+        </div>
+
+        <div class="container chapter-layout chapter-layout-reverse reveal">
+          <figure class="product-shot product-shot-portrait glass-panel chapter-media">
+            <img
+              src="assets/SuperSent-guided-send-panel.png"
+              width="640"
+              height="500"
+              loading="lazy"
+              alt="SuperSent 全引导式发送浮窗展示当前文字预览、进度和操作按钮"
+            >
+            <figcaption><span>05</span>全引导式发送的预览、粘贴、跳过和取消</figcaption>
+          </figure>
+
+          <div class="feature-detail-grid">
+            <article class="feature-detail" data-feature="ordinary-send"><span>23</span><h3>普通条目自动粘贴</h3><p>选择文本、图片、文件或已渲染模板后，SuperSent 写入系统剪贴板、恢复原目标应用，并在 macOS 投递 <kbd>⌘V</kbd>、Windows 投递 <kbd>Ctrl+V</kbd>。</p></article>
+            <article class="feature-detail" data-feature="copy-only"><span>24</span><h3>仅复制模式</h3><p>macOS 按 <kbd>⌥ Enter</kbd>、Windows 按 <kbd>Alt+Enter</kbd> 时只写入剪贴板，不模拟粘贴；组合条目会提示改用全引导式发送，避免只复制第一块。</p></article>
+            <article class="feature-detail" data-feature="template-render"><span>25</span><h3>模板填写后发送</h3><p>模板会先弹出变量填写框，生成最终纯文本后再按普通条目流程复制或粘贴。</p></article>
+            <article class="feature-detail" data-feature="guided-preview"><span>26</span><h3>逐块预览</h3><p>组合内容启动后，在输入框附近展示当前文字、图片或视频预览、类型和总进度；视频不会自动播放。</p></article>
+            <article class="feature-detail" data-feature="guided-actions"><span>27</span><h3>粘贴、跳过、取消</h3><p>每一块都通过鼠标按钮决定：粘贴当前项、跳到下一项，或立即取消整个流程。</p></article>
+            <article class="feature-detail" data-feature="guided-position"><span>28</span><h3>浮窗自动定位</h3><p>优先贴近当前输入框显示；空间不足时自动切换上下方，并限制在当前显示器可见区域内。</p></article>
+            <article class="feature-detail" data-feature="target-safety"><span>29</span><h3>每次粘贴前复核目标</h3><p>持续校验前台应用 PID、当前窗口与输入位置；目标应用或窗口发生变化时停止投递并提示返回。</p></article>
+            <article class="feature-detail" data-feature="browser-fallback"><span>30</span><h3>网页输入框兼容模式</h3><p>浏览器或自定义编辑器未公开可编辑节点时，使用当前聚焦窗口定位，并持续提示确认光标仍在输入框。</p></article>
+            <article class="feature-detail" data-feature="wechat-compatibility"><span>31</span><h3>微信桌面端兼容</h3><p>针对微信未公开输入框几何的情况使用安全窗口锚点，仍在每次粘贴前确认前台应用和目标窗口。</p></article>
+            <article class="feature-detail" data-feature="send-boundary"><span>32</span><h3>完成统计，不代替发送</h3><p>结束后显示已粘贴与已跳过数量并记录一次使用；不会自动点击第三方应用的发送、发布或提交按钮。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- E：主窗口说明后台入口，文字细节准确标注本地存储、更新和分发边界。 -->
+      <section id="system" class="feature-chapter section">
+        <div class="container chapter-heading reveal">
+          <p class="section-index">E / SYSTEM</p>
+          <div><h2>系统、隐私与更新</h2><p>明确权限用途，发布与更新全程可验证。</p></div>
+        </div>
+
+        <div class="container chapter-layout reveal">
+          <figure class="product-shot glass-panel chapter-media">
+            <img
+              src="assets/SuperSent-main-window.png"
+              width="2160"
+              height="1440"
+              loading="lazy"
+              alt="SuperSent 主窗口按分类管理图片、模板与文本条目"
+            >
+            <figcaption><span>06</span>本地内容管理主窗口与后台常驻入口</figcaption>
+          </figure>
+
+          <div class="feature-detail-grid">
+            <article class="feature-detail" data-feature="menu-bar"><span>33</span><h3>后台常驻入口</h3><p>macOS 菜单栏与 Windows 系统托盘均可打开内容管理窗口、手动“检查更新…”或退出应用。</p></article>
+            <article class="feature-detail" data-feature="accessibility-boundary"><span>34</span><h3>辅助功能权限边界</h3><p>全局搜索无需授权 macOS 辅助功能；只有定位输入框和向其他应用投递 <kbd>⌘V</kbd> 时需要该权限。Windows 使用系统热键与剪贴板能力。</p></article>
+            <article class="feature-detail" data-feature="local-data"><span>35</span><h3>数据库与资源保存在本机</h3><p>macOS 数据位于 <code>Application Support/SuperSent</code>；Windows 首次启动时由用户选择数据目录。两个平台不会读取、关联或迁移彼此数据。</p></article>
+            <article class="feature-detail" data-feature="privacy-boundary"><span>36</span><h3>无需账户与追踪</h3><p>不要求注册，不提供云同步，不上传内容库、剪贴板内容或用户文件，也不使用分析和广告追踪服务。</p></article>
+            <article class="feature-detail" data-feature="update-checks"><span>37</span><h3>自动与手动检查更新</h3><p>启动后静默检查一次，持续运行时每四小时检查一次本平台更新源；后台入口仍可随时手动检查。</p></article>
+            <article class="feature-detail" data-feature="update-confirmation"><span>38</span><h3>发现新版才提示</h3><p>只有发现新版本时才显示提示；不会后台自动下载、安装或退出，最终更新始终由用户确认。</p></article>
+            <article class="feature-detail" data-feature="update-data-preservation"><span>39</span><h3>更新保留全部内容</h3><p>平台更新器只替换程序文件，分类、分组、条目、数据库和托管资源继续保留。</p></article>
+            <article class="feature-detail" data-feature="signed-distribution"><span>40</span><h3>分平台分发与更新校验</h3><p>macOS 应用和 DMG 使用 Apple Developer ID 签名并通过公证；Windows 当前为未签名安装包，使用独立的 <code>win-x64</code> 更新源。</p></article>
+            <article class="feature-detail" data-feature="system-requirements"><span>41</span><h3>当前系统支持</h3><p>macOS 版本要求 macOS 13 Ventura 或更高版本的 Apple Silicon Mac；Windows 版本要求 Windows 10 20H2 或更高版本的 x64 系统。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-cta section">
+        <div class="container glass-panel reveal">
+          <div><p class="section-index">READY TO USE</p><h2>选择与你当前设备对应的版本。</h2></div>
+          <a class="button button-light" href="/#download">前往操作系统选择</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <a class="brand footer-brand" href="/"><img src="assets/app-icon.png" width="28" height="28" alt=""><span>SuperSent</span></a>
+        <p>当前正式版 1.3.0 · 41 项已发布能力</p>
+        <div class="footer-links"><a href="/">首页</a><a href="privacy.html">隐私与架构</a><a href="https://github.com/SilnoGM/SuperSent-Releases/issues">问题反馈</a></div>
+        <p class="copyright">© <span data-current-year>2026</span> SuperSent</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
