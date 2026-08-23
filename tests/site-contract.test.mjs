@@ -118,28 +118,28 @@ test("首页完整介绍当前正式版的四十一个功能点", () => {
   assert.match(html, /全局搜索无需授权/);
 });
 
-test("M5.2a 本地候选仍保留已发布 v1.2.3 的签名更新源，禁止伪造 v1.3.0 appcast", () => {
+test("M5.2b 使用真实签名的 v1.3.0 macOS 更新源并保持平台隔离", () => {
   const appcast = readSiteFile("appcast.xml");
-  const releaseNotes = readSiteFile("SuperSent-1.2.3.md");
+  const releaseNotes = readSiteFile("SuperSent-1.3.0.md");
 
   assert.equal((appcast.match(/<item>/g) ?? []).length, 1);
-  assert.match(appcast, /<sparkle:version>8<\/sparkle:version>/);
-  assert.match(appcast, /<sparkle:shortVersionString>1\.2\.3<\/sparkle:shortVersionString>/);
+  assert.match(appcast, /<sparkle:version>9<\/sparkle:version>/);
+  assert.match(appcast, /<sparkle:shortVersionString>1\.3\.0<\/sparkle:shortVersionString>/);
   assert.match(appcast, /<sparkle:minimumSystemVersion>13\.0<\/sparkle:minimumSystemVersion>/);
-  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.2\.3\/SuperSent-1\.2\.3\.dmg/);
-  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.2\.3\.md/);
+  assert.match(appcast, /<sparkle:hardwareRequirements>arm64<\/sparkle:hardwareRequirements>/);
+  assert.match(appcast, /SuperSent-Releases\/releases\/download\/v1\.3\.0\/SuperSent-1\.3\.0\.dmg/);
+  assert.match(appcast, /sparkle:releaseNotesLink[^>]*>https:\/\/supersent-website\.pages\.dev\/SuperSent-1\.3\.0\.md/);
   assert.match(appcast, /<sparkle:deltas>/);
-  for (const previousBuild of [7, 6, 5, 3]) {
-    assert.match(appcast, new RegExp(`SuperSent8-${previousBuild}\\.delta`));
+  for (const previousBuild of [8, 7, 6, 5, 3]) {
+    assert.match(appcast, new RegExp(`SuperSent9-${previousBuild}\\.delta`));
   }
-  assert.doesNotMatch(appcast, /releases\/download\/v1\.2\.3\/SuperSent-1\.(?:0\.2|1\.0|2\.0|2\.1|2\.2)\.dmg/);
+  assert.doesNotMatch(appcast, /windows-x64|Setup\.exe|Portable\.zip|Velopack/i);
+  assert.doesNotMatch(appcast, /releases\/download\/v1\.(?:0\.2|1\.0|2\.0|2\.1|2\.2|2\.3)\/SuperSent-/);
   assert.match(appcast, /sparkle:edSignature=/);
   assert.match(appcast, /sparkle-signatures:/);
-  assert.match(releaseNotes, /安装更新只替换应用程序本身/);
-  assert.match(releaseNotes, /单击结果后无需再次点击搜索框/);
-  assert.match(releaseNotes, /双击结果等同普通 `Enter`/);
-  assert.match(releaseNotes, /插入点会折叠到查询词末尾/);
-  assert.match(releaseNotes, /SuperSent-Releases\/releases\/download\/v1\.2\.3\/SuperSent-1\.2\.3\.dmg/);
+  assert.match(releaseNotes, /软件优化/);
+  assert.match(releaseNotes, /更新只替换应用程序本身/);
+  assert.doesNotMatch(releaseNotes, /Windows|Setup\.exe|win-x64/);
 });
 
 test("签名更新源每次请求都会向 CDN 重新验证", () => {
