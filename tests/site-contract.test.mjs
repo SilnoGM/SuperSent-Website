@@ -62,6 +62,37 @@ test("首页包含 v1.3.0 双平台下载入口、unsigned 提示及完整产品
   assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/issues/);
 });
 
+test("首页采用深色 HUD 视觉并准确区分双平台快捷键与分发边界", () => {
+  const html = readSiteFile("index.html");
+  const css = readSiteFile("styles.css");
+
+  // 视觉复刻必须落在本地 HTML/CSS 中，不能依赖参考稿里的 Tailwind CDN 或第三方图标脚本。
+  for (const landmark of [
+    "floating-nav-shell",
+    "hero-status",
+    "shortcut-guide",
+    "interface-stage",
+    "feature-bento",
+    "privacy-spec-grid"
+  ]) {
+    assert.match(html, new RegExp(`class="[^"]*${landmark}`));
+  }
+  assert.match(css, /--surface-page:\s*#090a0f/i);
+  assert.match(css, /--accent:\s*#6670d5/i);
+  assert.match(css, /\.glass-panel\s*\{/);
+
+  // 快捷键与签名状态以两端实际注册代码为真相源，禁止沿用参考稿中的错误平台说明。
+  assert.match(html, /macOS 呼出[\s\S]*?⌘\s*⇧\s*Space/);
+  assert.match(html, /Windows 呼出[\s\S]*?Ctrl\+Shift\+Space/);
+  assert.doesNotMatch(html, /Alt\s*\+\s*Space/);
+  assert.match(html, /macOS 仅复制[\s\S]*?⌥\s*Enter/);
+  assert.match(html, /Windows 仅复制[\s\S]*?Alt\+Enter/);
+  assert.match(html, /macOS 已签名并通过 Apple 公证/);
+  assert.match(html, /Windows 当前未签名/);
+  assert.doesNotMatch(html, /双端架构已签名/);
+  assert.doesNotMatch(html, /Intel 芯片|Windows on ARM/);
+});
+
 test("首页完整介绍当前正式版的四十一个功能点", () => {
   const html = readSiteFile("index.html");
   const publishedFeatures = [...html.matchAll(/data-feature="([^"]+)"/g)]
