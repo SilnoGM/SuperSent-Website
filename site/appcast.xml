@@ -4,25 +4,26 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SuperSent</title>
         <item>
-            <title>1.3.1</title>
-            <pubDate>Sun, 23 Aug 2026 17:12:05 +0800</pubDate>
+            <title>1.3.2</title>
+            <pubDate>Mon, 24 Aug 2026 10:26:35 +0800</pubDate>
             <link>https://supersent-website.pages.dev/</link>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>1.3.1</sparkle:shortVersionString>
+            <sparkle:fullReleaseNotesLink>https://supersent-website.pages.dev/releases.html</sparkle:fullReleaseNotesLink>
+            <sparkle:version>11</sparkle:version>
+            <sparkle:shortVersionString>1.3.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <sparkle:releaseNotesLink sparkle:edSignature="j6lE4UrpeyTOMe8M/BcDBBAYl+ThInanSWLYsVuRLZlInSf54dvzJkpSbNSKgo/tskd+AcsEsBt34tojB+OnCg==" sparkle:length="1184">https://supersent-website.pages.dev/SuperSent-1.3.1-macos.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.1/SuperSent-1.3.1.dmg" length="4425236" type="application/octet-stream" sparkle:edSignature="5zs/hyosnUFIB4cQ8T2lrGNARy6M6gTIXgvO4YW+JkiAxeA3Ktycw88O+owpA2aL1NK4IBT6hxP0XiZjACUWBg=="></enclosure>
+            <sparkle:releaseNotesLink sparkle:edSignature="99nFd1+Tivi4zyXIbjl2NINOhPdsbKiX1Aiv8xPSVWRQIRUINj0sp55efSZWIuLk7iKv5ywAbJJjAdNkBmI3Aw==" sparkle:length="1165">https://supersent-website.pages.dev/SuperSent-1.3.2-macos.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.2/SuperSent-1.3.2.dmg" length="4425239" type="application/octet-stream" sparkle:edSignature="6VdwugFRwPwl1hxCs4l2fPKNFoZM9kpU8zBNya9AOFzkV25o+9YkLeC+kLnNdFnzDIYv65GRunnpuQt1eBlRBA=="></enclosure>
             <sparkle:deltas>
-                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.1/SuperSent10-9.delta" sparkle:deltaFrom="9" length="201766" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="uSJzVut8BA8rpxAnHtKvWE46beAp6oAauT+kYu0zDKA9uRCry2j+TJhqKXiSpu4L9oHlnX/pN/TWZHlFVFQlBw=="></enclosure>
-                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.1/SuperSent10-8.delta" sparkle:deltaFrom="8" length="201030" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="e9oyj1jMh6SC2gb22AdF4TIfkqQjReetnq5JxB7M6m2eeBdcAWlECY7TcCZQIA3V07xKQqzeJ2ONtFSaXbD7CQ=="></enclosure>
-                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.1/SuperSent10-7.delta" sparkle:deltaFrom="7" length="203302" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="WDvMsVslq39WfoQtPrn45AxZxYs/TJAoY96U/OuaMGaIYdKbDSTjigS/N+h9qZMPQyBSG8356bMXC7q9mlD9Dw=="></enclosure>
-                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.1/SuperSent10-6.delta" sparkle:deltaFrom="6" length="208954" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="7BUQFtg3IheCwrNnlswzABzqVjJ7SsAU8ouhBAFEj7iYT9eCOMPHTR8N8sQtTyiBcA5AytZ8jVOTBfCL82xTCw=="></enclosure>
-                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.1/SuperSent10-5.delta" sparkle:deltaFrom="5" length="206310" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="iH6bAQFsvxhJE8WdeB8K40GJgvJQ7IT1fOJ4aypR/MxF2lLfIwY+bHw4BkzNDycktnXqKpGxbKJ9RhODMGOACQ=="></enclosure>
+                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.2/SuperSent11-10.delta" sparkle:deltaFrom="10" length="9610" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="cmRTVaTG+QHQcMZaBYTMe06zu1DhEbi2d97LllKJrz2tiipBOReIv1lNW3OVuUtP60oA5yVezQXGBThyUEG1CA=="></enclosure>
+                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.2/SuperSent11-9.delta" sparkle:deltaFrom="9" length="201734" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="lzz6rTYzlaR3YqnAuiieB8DSwTcgSkhhgEi2V3Nh2GdFu6hY2sBR7oztaimVNm+i6BzQpqdbBNRArWRo1p9oDQ=="></enclosure>
+                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.2/SuperSent11-8.delta" sparkle:deltaFrom="8" length="201722" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="m078msXk1Y+2Xs8T5kZoIarcyfmn3054dDpm4UVWTyNoybf9QpE1BmzQbnkbrZxgJiY3yuvwhNX8PcGlldGcBw=="></enclosure>
+                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.2/SuperSent11-7.delta" sparkle:deltaFrom="7" length="204034" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="fHYzaB0jE6BDXGZmmXu4KmloZkVVrvsqW7BQddnDjUOV0NP0YMI4DB4CjH9utXS+0lMNJ5RoDa7O6MkQTKHVCA=="></enclosure>
+                <enclosure url="https://github.com/SilnoGM/SuperSent-Releases/releases/download/v1.3.2/SuperSent11-6.delta" sparkle:deltaFrom="6" length="208246" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="68gTSUSg5r7tiNYul1pDjaobylySWCCg01aHHza4+ibV73LMG4FjWswpgimJb60UutStCYPgGTjN42Z6X8hmDw=="></enclosure>
             </sparkle:deltas>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: DnBpb+yifHeMKmlE4KdrSex/pOPABAzys5ufS5bim+lDbvzxnAv6wjt/2m/c1JNGvVYyjXcNgR4/L7gyYLYfBA==
-length: 3617
+edSignature: 6EyE4AiJH0pr35dbtQp/4Mc4nk3b3/gBGnf3p1IVaJ+xO4cBrTL8uW+81HThD8YMot+WPC8sgdXRTZP/b3YwCw==
+length: 3740
 -->
