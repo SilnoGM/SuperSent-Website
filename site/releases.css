@@ -1,0 +1,470 @@
+/*
+ * 版本页专用样式：沿用官网基础变量，不在全局样式中继续堆叠页面特有规则。
+ * 桌面端以左侧版本刻度和右侧说明形成非对称时间线；移动端改为单列，但保留时间方向感。
+ */
+
+.release-page {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(102, 112, 213, 0.14), transparent 32%),
+    radial-gradient(circle at 82% 34%, rgba(92, 191, 146, 0.07), transparent 28%),
+    var(--surface-page);
+}
+
+.release-hero {
+  padding: 168px 0 76px;
+}
+
+.release-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: end;
+}
+
+.release-hero-heading h1 {
+  max-width: 780px;
+  margin: 0;
+  font-size: clamp(3rem, 6.2vw, 6.1rem);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+.release-hero-heading h1 span {
+  display: block;
+  color: var(--muted);
+}
+
+.release-hero-summary > p {
+  max-width: 42rem;
+  margin-bottom: 2rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.release-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+}
+
+.release-stats div {
+  padding: 1rem;
+  background: rgba(11, 13, 20, 0.88);
+}
+
+.release-stats dt {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.release-stats dd {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.release-jump {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  margin-top: 4.5rem;
+  padding: 0.8rem;
+  overflow-x: auto;
+  border-radius: 0.9rem;
+  scrollbar-width: thin;
+}
+
+.release-jump span,
+.release-jump a {
+  flex: 0 0 auto;
+}
+
+.release-jump span {
+  padding: 0.35rem 0.7rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.release-jump a {
+  padding: 0.42rem 0.72rem;
+  color: var(--ink-soft);
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  transition: color 160ms var(--ease), background 160ms var(--ease), border-color 160ms var(--ease);
+}
+
+.release-jump a:hover {
+  color: var(--ink);
+  background: var(--surface-hover);
+  border-color: var(--line);
+}
+
+/* 纵向线只负责表达时间关系，所有内容仍保持正常文档流和键盘顺序。 */
+.release-timeline {
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+.release-timeline::before {
+  position: absolute;
+  top: 0.7rem;
+  bottom: 5.6rem;
+  left: 192px;
+  width: 1px;
+  content: "";
+  background: linear-gradient(to bottom, var(--accent-line), var(--line) 20%, var(--line) 88%, transparent);
+}
+
+.release-node {
+  display: grid;
+  grid-template-columns: 164px minmax(0, 1fr);
+  gap: 64px;
+  scroll-margin-top: 116px;
+}
+
+.release-node + .release-node {
+  margin-top: 2.5rem;
+}
+
+.release-marker {
+  position: relative;
+  padding-top: 1.25rem;
+  text-align: right;
+}
+
+.release-dot {
+  position: absolute;
+  top: 1.52rem;
+  right: -37px;
+  width: 11px;
+  height: 11px;
+  background: var(--surface-page);
+  border: 2px solid var(--muted-deep);
+  border-radius: 50%;
+  box-shadow: 0 0 0 7px var(--surface-page);
+}
+
+.release-node-current .release-dot {
+  background: var(--success);
+  border-color: var(--success);
+  box-shadow: 0 0 0 7px var(--surface-page), 0 0 24px rgba(92, 191, 146, 0.46);
+}
+
+.release-node-origin .release-dot {
+  border-color: var(--accent);
+}
+
+.release-version {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.release-marker time {
+  display: block;
+  margin-top: 0.28rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.release-state {
+  display: inline-flex;
+  margin-top: 0.8rem;
+  padding: 0.25rem 0.52rem;
+  color: var(--success);
+  background: var(--success-soft);
+  border: 1px solid rgba(92, 191, 146, 0.28);
+  border-radius: 0.42rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.release-state-platform {
+  color: #9ca7ff;
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+}
+
+.release-state-legacy {
+  color: var(--muted);
+  background: var(--surface-soft);
+  border-color: var(--line);
+}
+
+.release-entry {
+  position: relative;
+  padding: clamp(1.5rem, 3.5vw, 2.6rem);
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.release-node-current .release-entry {
+  border-color: rgba(92, 191, 146, 0.25);
+}
+
+.release-node-current .release-entry::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, var(--success), var(--accent), transparent 84%);
+}
+
+.release-entry-heading {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.release-entry-heading h2 {
+  max-width: 720px;
+  margin: 0;
+  font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.release-kicker {
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.release-lead {
+  max-width: 850px;
+  margin: 1.25rem 0 0;
+  color: var(--ink-soft);
+}
+
+.release-platform-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 1.75rem;
+}
+
+.release-platform-grid-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.release-platform {
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.release-platform-wide {
+  max-width: none;
+}
+
+.release-platform-title {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.release-platform-title img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.92;
+}
+
+.release-platform-title h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.release-platform ul {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.release-platform li::marker {
+  color: var(--muted-deep);
+}
+
+.release-platform-macos {
+  border-top-color: var(--accent-line);
+}
+
+.release-platform-windows {
+  border-top-color: rgba(72, 145, 217, 0.48);
+}
+
+.release-closing {
+  padding-top: 0;
+}
+
+.release-closing-panel {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1.8rem, 4vw, 3.2rem);
+  border-radius: 1rem;
+}
+
+.release-closing-panel h2 {
+  max-width: 680px;
+  margin: 0;
+  font-size: var(--type-subsection);
+}
+
+.release-closing-actions {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 980px) {
+  .release-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .release-hero-summary {
+    max-width: 720px;
+  }
+
+  .release-timeline::before {
+    left: 152px;
+  }
+
+  .release-node {
+    grid-template-columns: 124px minmax(0, 1fr);
+    gap: 56px;
+  }
+
+  .release-dot {
+    right: -33px;
+  }
+
+  .release-platform-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .release-hero {
+    padding: 132px 0 54px;
+  }
+
+  .release-hero-heading h1 {
+    font-size: clamp(2.65rem, 14vw, 4.15rem);
+  }
+
+  .release-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .release-stats div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .release-jump {
+    margin-top: 3rem;
+  }
+
+  .release-timeline {
+    padding-left: 28px;
+  }
+
+  .release-timeline::before {
+    left: 6px;
+    bottom: 4rem;
+  }
+
+  .release-node {
+    display: block;
+  }
+
+  .release-node + .release-node {
+    margin-top: 2rem;
+  }
+
+  .release-marker {
+    display: flex;
+    gap: 0.55rem;
+    align-items: center;
+    padding: 0 0 0.75rem;
+    text-align: left;
+  }
+
+  .release-dot {
+    top: 0.44rem;
+    right: auto;
+    left: -27px;
+  }
+
+  .release-marker time {
+    margin: 0;
+  }
+
+  .release-state {
+    margin: 0 0 0 auto;
+  }
+
+  .release-entry {
+    padding: 1.25rem;
+  }
+
+  .release-entry-heading,
+  .release-closing-panel,
+  .release-closing-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .release-entry-heading .button,
+  .release-closing-actions .button {
+    width: 100%;
+  }
+
+  .release-closing-actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .release-marker {
+    flex-wrap: wrap;
+  }
+
+  .release-state {
+    margin-left: 0;
+  }
+
+  .release-platform {
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .release-jump a {
+    transition: none;
+  }
+}

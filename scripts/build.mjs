@@ -13,7 +13,7 @@ await mkdir(outputDirectory, { recursive: true });
 await cp(sourceDirectory, outputDirectory, { recursive: true });
 
 // 部署域名只在构建阶段注入，使预览环境和正式域名可以共用同一份源码。
-for (const relativePath of ["index.html", "privacy.html", "robots.txt", "sitemap.xml"]) {
+for (const relativePath of ["index.html", "privacy.html", "releases.html", "robots.txt", "sitemap.xml"]) {
   const targetPath = join(outputDirectory, relativePath);
   const source = await readFile(targetPath, "utf8");
   await writeFile(targetPath, source.replaceAll("{{SITE_URL}}", siteUrl), "utf8");

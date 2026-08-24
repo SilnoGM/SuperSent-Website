@@ -7,7 +7,7 @@ const projectRoot = new URL("..", import.meta.url).pathname;
 const siteRoot = join(projectRoot, "site");
 
 test("HTML 引用的本地资源全部存在", () => {
-  for (const page of ["index.html", "features.html", "privacy.html"]) {
+  for (const page of ["index.html", "features.html", "privacy.html", "releases.html"]) {
     const pagePath = join(siteRoot, page);
     assert.ok(existsSync(pagePath), `缺少页面：site/${page}`);
     const html = readFileSync(pagePath, "utf8");

@@ -64,7 +64,7 @@ test("首页包含 v1.3.1 双平台下载入口、unsigned 提示及完整产品
   assert.match(html, /data-platform="windows"/);
   assert.match(html, /Windows 安装包当前未进行代码签名/);
   assert.match(html, /SmartScreen/);
-  assert.match(html, /https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases\/tag\/v1\.3\.1/);
+  assert.match(html, /href="releases\.html#v1-3-1"[^>]*>查看发布说明<\/a>/);
   assert.match(html, /"softwareVersion": "1\.3\.1"/);
   assert.match(publicProductCopy, /单击[^。]*Enter/);
   assert.match(publicProductCopy, /双击[^。]*Enter/);
@@ -113,12 +113,75 @@ test("首页严格采用参考 HTML 的单页结构并准确区分双平台快�
   assert.match(css, /\.platform-icon\s*\{[\s\S]*?width:\s*18px;[\s\S]*?height:\s*18px;/);
   assert.match(css, /\.platform-icon-card\s*\{[\s\S]*?width:\s*22px;[\s\S]*?height:\s*22px;/);
 
-  // 顶部导航只保留确认后的三个信息入口；所有下载 CTA 先进入同一个系统选择节点。
+  // 顶部导航增加站内版本时间线；所有下载 CTA 仍先进入同一个系统选择节点。
   assert.match(html, /href="features\.html"[^>]*>核心特性<\/a>/);
   assert.match(html, /href="privacy\.html"[^>]*>隐私与架构<\/a>/);
+  assert.match(html, /href="releases\.html"[^>]*>版本更新<\/a>/);
   assert.match(html, /href="#download"[^>]*>多端下载<\/a>/);
   assert.match(html, /href="#download"[^>]*>[\s\S]*?免费下载[\s\S]*?<\/a>/);
   assert.doesNotMatch(html, /<a[^>]+href="[^"]*guided[^"]*"[^>]*>引导式发送<\/a>/);
+});
+
+test("版本更新时间线完整收录正式版本并保持双平台边界", () => {
+  const html = readSiteFile("releases.html");
+  const css = readSiteFile("releases.css");
+  const expectedVersions = [
+    "v1.3.1",
+    "v1.3.0",
+    "v1.2.3",
+    "v1.2.2",
+    "v1.2.1",
+    "v1.2.0",
+    "v1.1.0",
+    "v1.0.2",
+    "v1.0.1",
+    "v1.0.0"
+  ];
+  const publishedVersions = [...html.matchAll(/<article[^>]+data-release="([^"]+)"/g)]
+    .map((match) => match[1]);
+
+  assert.deepEqual(publishedVersions, expectedVersions);
+  assert.match(html, /<time datetime="2026-08-23">2026 年 8 月 23 日<\/time>/);
+  assert.match(html, /id="v1-3-1"/);
+  assert.match(html, /id="v1-3-0"/);
+  assert.match(html, /首个 macOS 与 Windows 共用版本号的双平台版本/);
+  assert.match(html, /Command\+A/);
+  assert.match(html, /Windows[^<]*品牌图标/);
+  assert.match(html, /Ctrl\+Shift\+Space/);
+  assert.match(html, /SQLite v4/);
+  assert.match(html, /应用内检查更新/);
+  assert.match(html, /创建第一条内容/);
+  assert.match(html, /首个公开正式版本/);
+
+  // v1.3.0 之前没有 Windows 正式版，时间线必须明确标成仅 macOS，不能制造历史版本。
+  const legacyReleaseSection = html.slice(html.indexOf('id="v1-2-3"'));
+  assert.match(legacyReleaseSection, /仅 macOS/);
+  assert.doesNotMatch(legacyReleaseSection, /class="release-platform[^>]*release-platform-windows/);
+
+  assert.match(css, /\.release-timeline\s*\{/);
+  assert.match(css, /\.release-node\s*\{/);
+  assert.match(css, /@media[^}]*max-width:\s*767px/s);
+  assert.match(html, /class="skip-link"/);
+  assert.match(html, /aria-current="page">版本更新<\/a>/);
+});
+
+test("所有版本说明入口留在官网内且保留外部下载边界", () => {
+  const pages = ["index.html", "features.html", "privacy.html", "releases.html"]
+    .map(readSiteFile);
+  const combinedPages = pages.join("\n");
+
+  assert.match(pages[0], /href="releases\.html#v1-3-1"[^>]*>查看发布说明<\/a>/);
+  assert.match(pages[0], /href="releases\.html"[^>]*>所有版本<\/a>/);
+  assert.match(pages[1], /href="releases\.html"[^>]*>版本更新<\/a>/);
+  assert.match(pages[2], /href="releases\.html#v1-3-1"[^>]*>发布说明<\/a>/);
+  assert.doesNotMatch(
+    combinedPages,
+    /href="https:\/\/github\.com\/SilnoGM\/SuperSent-Releases\/releases(?:\/tag\/[^"#]+)?"/
+  );
+
+  // 安装包与问题反馈仍由公开 Release 仓库承担，不把二进制复制进官网。
+  assert.match(combinedPages, /SuperSent-Releases\/releases\/download\/v1\.3\.1/);
+  assert.match(combinedPages, /SuperSent-Releases\/issues/);
 });
 
 test("核心特性独立页完整介绍当前正式版的四十一个功能点", () => {
@@ -284,7 +347,8 @@ test("公开页面不加载第三方脚本、追踪器或非 HTTPS 资源", () =
   const pages = [
     readSiteFile("index.html"),
     readSiteFile("features.html"),
-    readSiteFile("privacy.html")
+    readSiteFile("privacy.html"),
+    readSiteFile("releases.html")
   ].join("\n");
 
   assert.doesNotMatch(pages, /<script[^>]+src="https?:\/\//);
@@ -297,6 +361,7 @@ test("公开页面不使用会被严格 CSP 拦截的内联样式", () => {
     readSiteFile("index.html"),
     readSiteFile("features.html"),
     readSiteFile("privacy.html"),
+    readSiteFile("releases.html"),
     readSiteFile("404.html")
   ].join("\n");
 
@@ -314,9 +379,10 @@ test("整站使用受控的响应式排版尺度", () => {
   assert.match(css, /\.hero h1\s*\{[^}]*font-size:\s*var\(--type-hero\)/s);
 });
 
-test("站点地图收录核心特性与隐私架构独立页", () => {
+test("站点地图收录核心特性、隐私架构与版本更新独立页", () => {
   const sitemap = readSiteFile("sitemap.xml");
 
   assert.match(sitemap, /\{\{SITE_URL\}\}\/features\.html/);
   assert.match(sitemap, /\{\{SITE_URL\}\}\/privacy\.html/);
+  assert.match(sitemap, /\{\{SITE_URL\}\}\/releases\.html/);
 });
