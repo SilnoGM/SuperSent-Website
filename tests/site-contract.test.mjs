@@ -122,20 +122,12 @@ test("首页严格采用参考 HTML 的单页结构并准确区分双平台快�
   assert.doesNotMatch(html, /<a[^>]+href="[^"]*guided[^"]*"[^>]*>引导式发送<\/a>/);
 });
 
-test("版本更新时间线完整收录正式版本并保持双平台边界", () => {
+test("版本更新时间线从 v1.3.0 开始并只展示双平台版本", () => {
   const html = readSiteFile("releases.html");
   const css = readSiteFile("releases.css");
   const expectedVersions = [
     "v1.3.1",
-    "v1.3.0",
-    "v1.2.3",
-    "v1.2.2",
-    "v1.2.1",
-    "v1.2.0",
-    "v1.1.0",
-    "v1.0.2",
-    "v1.0.1",
-    "v1.0.0"
+    "v1.3.0"
   ];
   const publishedVersions = [...html.matchAll(/<article[^>]+data-release="([^"]+)"/g)]
     .map((match) => match[1]);
@@ -148,15 +140,11 @@ test("版本更新时间线完整收录正式版本并保持双平台边界", ()
   assert.match(html, /Command\+A/);
   assert.match(html, /Windows[^<]*品牌图标/);
   assert.match(html, /Ctrl\+Shift\+Space/);
-  assert.match(html, /SQLite v4/);
-  assert.match(html, /应用内检查更新/);
-  assert.match(html, /创建第一条内容/);
-  assert.match(html, /首个公开正式版本/);
+  assert.match(html, /<dt>2<\/dt><dd>双平台版本<\/dd>/);
 
-  // v1.3.0 之前没有 Windows 正式版，时间线必须明确标成仅 macOS，不能制造历史版本。
-  const legacyReleaseSection = html.slice(html.indexOf('id="v1-2-3"'));
-  assert.match(legacyReleaseSection, /仅 macOS/);
-  assert.doesNotMatch(legacyReleaseSection, /class="release-platform[^>]*release-platform-windows/);
+  // 官网从双平台统一版本号的起点开始记录，不保留或隐藏旧版 macOS 时间线。
+  assert.doesNotMatch(html, /v1\.(?:0\.[0-2]|1\.0|2\.[0-3])/);
+  assert.doesNotMatch(html, /release-state-legacy|仅 macOS/);
 
   assert.match(css, /\.release-timeline\s*\{/);
   assert.match(css, /\.release-node\s*\{/);

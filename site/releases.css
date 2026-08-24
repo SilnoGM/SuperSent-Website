@@ -162,10 +162,6 @@
   box-shadow: 0 0 0 7px var(--surface-page), 0 0 24px rgba(92, 191, 146, 0.46);
 }
 
-.release-node-origin .release-dot {
-  border-color: var(--accent);
-}
-
 .release-version {
   margin: 0;
   color: var(--ink);
@@ -197,12 +193,6 @@
   color: #9ca7ff;
   background: var(--accent-soft);
   border-color: var(--accent-line);
-}
-
-.release-state-legacy {
-  color: var(--muted);
-  background: var(--surface-soft);
-  border-color: var(--line);
 }
 
 .release-entry {
@@ -261,19 +251,11 @@
   margin-top: 1.75rem;
 }
 
-.release-platform-grid-single {
-  grid-template-columns: minmax(0, 1fr);
-}
-
 .release-platform {
   padding: 1.25rem;
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid var(--line);
   border-radius: 0.75rem;
-}
-
-.release-platform-wide {
-  max-width: none;
 }
 
 .release-platform-title {
