@@ -33,7 +33,7 @@
         <a class="brand" href="/" aria-label="SuperSent 首页">
           <img src="assets/app-icon.png" width="36" height="36" alt="">
           <span>SuperSent</span>
-          <span class="version-badge">v1.3.1</span>
+          <span class="version-badge">v1.3.2</span>
         </a>
 
         <button
@@ -67,10 +67,10 @@
           <div class="release-hero-summary">
             <p>
               从首个双平台统一版本开始，所有已经公开的双端功能、修复与系统边界都在这里按时间倒序记录。
-              当前正式版为 <strong>v1.3.1</strong>。
+              当前正式版为 <strong>v1.3.2</strong>。
             </p>
             <dl class="release-stats" aria-label="版本历史概览">
-              <div><dt>2</dt><dd>双平台版本</dd></div>
+              <div><dt>3</dt><dd>双平台版本</dd></div>
               <div><dt>2</dt><dd>桌面平台</dd></div>
               <div><dt>v1.3.0</dt><dd>时间线起点</dd></div>
             </dl>
@@ -79,6 +79,7 @@
 
         <nav class="container release-jump glass-panel" aria-label="快速跳转到版本">
           <span>快速跳转</span>
+          <a href="#v1-3-2">v1.3.2</a>
           <a href="#v1-3-1">v1.3.1</a>
           <a href="#v1-3-0">v1.3.0</a>
         </nav>
@@ -88,17 +89,50 @@
         时间线内容以公开 GitHub Release 的 published_at 和发布说明为真相源，并按确认范围从 v1.3.0 开始。
       -->
       <section class="container release-timeline" aria-label="SuperSent 版本更新时间线">
-        <article id="v1-3-1" class="release-node release-node-current" data-release="v1.3.1">
+        <article id="v1-3-2" class="release-node release-node-current" data-release="v1.3.2">
           <header class="release-marker">
             <span class="release-dot" aria-hidden="true"></span>
-            <p class="release-version">v1.3.1</p>
-            <time datetime="2026-08-23">2026 年 8 月 23 日</time>
+            <p class="release-version">v1.3.2</p>
+            <time datetime="2026-08-24">2026 年 8 月 24 日</time>
             <span class="release-state">当前版本</span>
           </header>
           <div class="release-entry glass-panel">
             <div class="release-entry-heading">
-              <div><p class="release-kicker">POLISH &amp; NATIVE FIXES</p><h2>实机体验修复与安装能力完善</h2></div>
+              <div><p class="release-kicker">STARTUP &amp; UPDATE HISTORY</p><h2>单实例启动与版本历史入口修复</h2></div>
               <a class="button button-small button-light" href="/#download">下载当前版本</a>
+            </div>
+            <p class="release-lead">Windows 再次启动时复用当前实例，不再重复注册全局快捷键；macOS 的版本历史记录改为打开官网完整时间线。</p>
+            <div class="release-platform-grid">
+              <section class="release-platform release-platform-macos">
+                <div class="release-platform-title"><img src="assets/icon-apple.svg" width="20" height="20" alt=""><h3>macOS</h3></div>
+                <ul>
+                  <li>“检查更新”中的“版本历史记录”现在使用默认浏览器打开官网版本更新时间线。</li>
+                  <li>当前版本说明仍由签名 Sparkle feed 提供，新版本发现、下载与安装流程保持不变。</li>
+                  <li>继续使用 Apple Developer ID 签名、公证和 Sparkle 签名更新。</li>
+                </ul>
+              </section>
+              <section class="release-platform release-platform-windows">
+                <div class="release-platform-title"><img src="assets/icon-windows.svg" width="20" height="20" alt=""><h3>Windows</h3></div>
+                <ul>
+                  <li>软件已运行时，再次点击桌面快捷方式会复用当前单实例并恢复现有主窗口。</li>
+                  <li>第二个进程在数据目录、托盘和全局热键初始化前退出，不再创建第二套应用组件。</li>
+                  <li>不再弹出由重复注册 <code>Ctrl+Shift+Space</code> 导致的“快捷键已被占用”提示。</li>
+                  <li>Windows 安装包当前未进行代码签名，系统仍可能显示 SmartScreen 提示。</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <article id="v1-3-1" class="release-node" data-release="v1.3.1">
+          <header class="release-marker">
+            <span class="release-dot" aria-hidden="true"></span>
+            <p class="release-version">v1.3.1</p>
+            <time datetime="2026-08-23">2026 年 8 月 23 日</time>
+          </header>
+          <div class="release-entry glass-panel">
+            <div class="release-entry-heading">
+              <div><p class="release-kicker">POLISH &amp; NATIVE FIXES</p><h2>实机体验修复与安装能力完善</h2></div>
             </div>
             <p class="release-lead">macOS 恢复标准文本编辑快捷键；Windows 修复品牌图标与媒体预览，并增加可选择安装位置的 MSI。两个平台同步优化滚动条。</p>
             <div class="release-platform-grid">
@@ -159,7 +193,7 @@
 
       <section class="release-closing section">
         <div class="container release-closing-panel glass-panel">
-          <div><p class="section-index">CURRENT RELEASE / v1.3.1</p><h2>查看完更新，再选择当前系统版本。</h2></div>
+          <div><p class="section-index">CURRENT RELEASE / v1.3.2</p><h2>查看完更新，再选择当前系统版本。</h2></div>
           <div class="release-closing-actions">
             <a class="button button-light" href="/#download">前往多端下载</a>
             <a class="text-link" href="https://github.com/SilnoGM/SuperSent-Releases/issues">问题反馈 <span aria-hidden="true">→</span></a>
@@ -171,7 +205,7 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <a class="brand footer-brand" href="/"><img src="assets/app-icon.png" width="28" height="28" alt=""><span>SuperSent</span></a>
-        <p>从 v1.3.0 到 v1.3.1 · 共 2 个双平台版本</p>
+        <p>从 v1.3.0 到 v1.3.2 · 共 3 个双平台版本</p>
         <div class="footer-links"><a href="/">首页</a><a href="features.html">核心特性</a><a href="privacy.html">隐私与架构</a></div>
         <p class="copyright">© <span data-current-year>2026</span> SuperSent</p>
       </div>
