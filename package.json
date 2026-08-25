@@ -1,6 +1,6 @@
 {
   "name": "supersent-website",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "private": true,
   "description": "SuperSent macOS 与 Windows 官方产品网站",
   "scripts": {
